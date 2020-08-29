@@ -30,6 +30,36 @@ class App extends React.Component {
   //   document.body.style.backgroundColor = `rgba(153, 141,217, ${opacity})`;
   // }
 
+  add = (title = 'New Group') => {
+
+    let colLength = Object.values(this.state.columns).length
+    let newColId = `column-${++colLength}`
+
+    const newColumn = {
+      id: newColId,
+      title: title,
+      taskIds: []
+    }
+
+    let colOrder = this.state.columnOrder
+    colOrder.push(newColId)
+
+    let newColumns = this.state.columns
+    newColumns[newColId] = newColumn
+
+    const newState = {
+      ...this.state,
+      columns: {
+        ...newColumns
+      },
+
+      columnOrder: colOrder
+    }
+    this.setState(newState)
+    console.log(this.state)
+  };
+
+
 
   onDragStart = start => {
     const homeIndex = this.state.columnOrder.indexOf(start.source.droppableId);
@@ -70,36 +100,6 @@ class App extends React.Component {
       }
       this.setState(newState);
       return;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
        
     }
 
@@ -194,6 +194,7 @@ class App extends React.Component {
             </Container>
           )}
         </Droppable>
+        <button onClick={()=> this.add('Hackathon')}>Add</button>
       </DragDropContext>
     );
   }
