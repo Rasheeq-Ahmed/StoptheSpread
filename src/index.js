@@ -20,12 +20,8 @@ const Container = styled.div`
 `;
 
 
-
-
-
 class App extends React.Component {
   state = initialData;
-
   // onDragStart = () => {
   //   document.body.style.color = 'orange';
   //   document.body.style.transition = 'background-color 0.2s ease';
@@ -106,7 +102,7 @@ class App extends React.Component {
     this.setState(newState)
   }
 
-  addTask = (columnId) => {
+  addTask = (columnId, content="") => {
     let { tasks, columns } = this.state;
     let taskLength = Object.values(tasks).length
     let taskId = `task-${++taskLength}`
@@ -115,7 +111,7 @@ class App extends React.Component {
       ...tasks,
       [taskId]: {
         id: taskId,
-        content: ''
+        content: content
       }
     };
 
