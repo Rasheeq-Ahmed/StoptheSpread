@@ -111,7 +111,7 @@ export default class Task extends React.Component {
                     </TitleContainer>
                     <EditContainer editShow={this.state.editShow} content={this.state.content}>
                         <Input type="text" value={this.state.content} onChange={(e) => this.update(e)}/>
-                            <Button onClick={() => { editTask(task.id, this.state.content); this.toggle() }}><FontAwesomeIcon icon="pencil-alt"/></Button>
+                            <Button onClick={() => { editTask(task.id, "content", this.state.content); this.toggle() }}><FontAwesomeIcon icon="pencil-alt"/></Button>
                             <Button onClick={() => removeTask(columnId, task.id)}><FontAwesomeIcon icon="trash" /></Button>
                     </EditContainer>
                 </Container>

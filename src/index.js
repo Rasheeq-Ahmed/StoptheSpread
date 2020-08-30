@@ -111,7 +111,8 @@ class App extends React.Component {
       ...tasks,
       [taskId]: {
         id: taskId,
-        content: content
+        content: content,
+        details: ""
       }
     };
 
@@ -148,16 +149,16 @@ class App extends React.Component {
           taskIds: newTaskIds
         }
       }
-    }
+    };
 
-    this.setState(newState)
-  }
+    this.setState(newState);
+  };
 
-  editTask = (taskId, text) => {
+  editTask = (taskId, param, text) => {
     let { tasks } = this.state
 
     let current = tasks;
-    current[taskId].content = text
+    current[taskId][param] = text
 
     let newState = {
       ...this.state,

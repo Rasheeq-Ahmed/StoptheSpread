@@ -35,13 +35,22 @@ export const EditContainer = styled.div`
    display: ${(props) => (props.editShow ? "flex" : "none")};
    justify-content: space-between;
    align-items: baseline;
+   margin-bottom: 8px;
    width: 80%;
 `;
 
+const DeleteContainer = styled.div`
+   display: ${(props) => (props.deleteShow ? "flex" : "none")};
+   justify-content: space-around;
+   align-items: baseline;
+   width: 80%;
+
+   & > button {
+        cursor: pointer;
+   };
+`;
+
 const Input = styled.input`
-    background: white;
-    font-size: medium;
-    font-weight: bold;
     width: 60%;
 `
 
@@ -52,7 +61,8 @@ export default class Column extends React.Component {
 
       this.state = {
         title: this.props.column.title,
-        editShow: false
+        editShow: false,
+        deleteShow: false,
       }
     }
 
@@ -83,8 +93,13 @@ export default class Column extends React.Component {
             <EditContainer editShow={this.state.editShow}>
                  <Input type="text" value={this.state.title} onChange={(e) => this.update(e)}/>
                  <Button onClick={() => { editColTitle(column.id, this.state.title); this.toggle() }}><FontAwesomeIcon icon="pencil-alt" /></Button>
-                 <Button onClick={() => removeCol(column.id)}><FontAwesomeIcon icon="trash" /></Button>
+                 <Button onClick={() => {this.setState({deleteShow: !this.state.deleteShow})}}><FontAwesomeIcon icon="trash" /></Button>
             </EditContainer>
+            <DeleteContainer deleteShow={this.state.deleteShow}>
+                 <p>Delete Column?</p>
+                 <button onClick={() => removeCol(column.id)}>Yes</button>
+                 <button onClick={() => { this.setState({ deleteShow: !this.state.deleteShow })}}>No</button>
+            </DeleteContainer>
 
             <Droppable 
             droppableId={this.props.column.id}
