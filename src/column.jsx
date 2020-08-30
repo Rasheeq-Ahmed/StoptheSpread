@@ -24,9 +24,21 @@ const TaskList = styled.div`
 
 
 export default class Column extends React.Component {
+    constructor(props) {
+      super(props)
+
+      this.state = {
+        title: ''
+      }
+    }
+
+    update(e) {
+      this.setState({title: e.currentTarget.value})
+    }
+
    render() {
    
-    let { removeCol, column } = this.props
+    let { editColTitle, removeCol, column } = this.props
        return (
     <Draggable draggableId={this.props.column.id} index={this.props.index}>
         { provided =>(
@@ -36,7 +48,8 @@ export default class Column extends React.Component {
             <Title {...provided.dragHandleProps}>
             {this.props.column.title}
             </Title>
-            <input type="text"/>
+            <input type="text" value={this.state.title} onChange={(e) => this.update(e)}/>
+            <button onClick={() => editColTitle(column.id, this.state.title )}>Edit</button>
             <button onClick={() => removeCol(column.id)}>Remove</button>
             <Droppable 
             droppableId={this.props.column.id}

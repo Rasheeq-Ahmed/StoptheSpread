@@ -235,7 +235,7 @@ class App extends React.Component {
           )}
         </Droppable>
         <button onClick={()=> this.addCol('Hackathon')}>Add</button>
-        <button onClick={()=> this.editColTitle("column-1", "Dinner")}>Edit</button>
+        {/* <button onClick={()=> this.editColTitle("column-1", "Dinner")}>Edit</button> */}
       </DragDropContext>
     );
   }
