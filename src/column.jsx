@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Task from './task'
 import {Droppable, Draggable} from 'react-beautiful-dnd'
+import { Button, Input, EditContainer } from './task';
 
 const Container = styled.div`
   margin: 8px;
@@ -28,7 +29,8 @@ export default class Column extends React.Component {
       super(props)
 
       this.state = {
-        title: ''
+        title: '',
+        editShow: false
       }
     }
 
@@ -36,7 +38,11 @@ export default class Column extends React.Component {
       this.setState({title: e.currentTarget.value})
     }
 
-   render() {
+    toggle = () => {
+    this.setState({ editShow: !this.state.editShow })
+    } 
+
+    render() {
    
     let { addTask, removeTask, editTask, editColTitle, removeCol, column } = this.props
        return (
@@ -47,10 +53,16 @@ export default class Column extends React.Component {
             ref={provided.innerRef}>
             <Title {...provided.dragHandleProps}>
             {this.props.column.title}
+                 <Button onClick={() => this.toggle()}>
+                   {this.state.editShow ? 'X' : 'O'}
+                 </Button>
             </Title>
-            <input type="text" value={this.state.title} onChange={(e) => this.update(e)}/>
-            <button onClick={() => editColTitle(column.id, this.state.title )}>Edit</button>
-            <button onClick={() => removeCol(column.id)}>Remove</button>
+              <EditContainer editShow={this.state.editShow}>
+                <Input type="text" value={this.state.title} onChange={(e) => this.update(e)}/>
+                <Button onClick={() => {editColTitle(column.id, this.state.title ); this.toggle()}}>E</Button>
+                <Button onClick={() => removeCol(column.id)}>-</Button>
+              </EditContainer>
+
             <Droppable 
             droppableId={this.props.column.id}
             

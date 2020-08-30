@@ -8,9 +8,46 @@ const Container = styled.div`
     padding: 8px;
     margin-bottom: 8px;
     background-color: ${props => (props.isDragDisabled ? 'lightgrey': props.isDragging ? 'lightgreen' : 'white')};
-
     display: flex;
     flex-direction: column;
+`;
+
+export const EditContainer = styled.div`
+   max-height: ${(props) => (props.editShow ? "10em" : "0")};
+   opacity: ${(props) => (props.editShow ? 1 : 0)};
+   overflow-y: hidden;
+   transition: 0.5s ease;
+   display: flex;
+   justify-content: center;
+   align-items: baseline;
+   width: max-content;
+`;
+
+export const Button = styled.p`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid grey;
+    border-radius: 2px;
+    width: 1.5em;
+    height: 1.5em;
+    cursor: pointer;
+`
+
+export const Input = styled.input`
+    width: 10em;
+    height: 2em;
+    box-sizing: border-box;
+    outline: none;
+    padding: 0;
+    margin: 0;
+`
+
+
+export const TitleContainer = styled.div`
+   display: flex;
+   justify-content: space-between;
+   margin-bottom: 8px;
 `;
 
 
@@ -32,13 +69,19 @@ export default class Task extends React.Component {
         super(props)
 
         this.state = {
-            content: ''
+            content: '',
+            editShow: false
         }
+
     }
 
     update = (e) => {
-        this.setState({content: e.currentTarget.value})
+        this.setState({content: e.currentTarget.value});
     }
+
+    toggle = () => {
+        this.setState({editShow: !this.state.editShow})
+    } 
 
     render() {
         let { editTask, removeTask, task, columnId } = this.props
@@ -60,10 +103,17 @@ export default class Task extends React.Component {
                 isDragDisabled={isDragDisabled}
                 >
                     {/* <Handle {...provided.dragHandleProps}/> */}
-                    {this.props.task.content}
-                    <input type="text" value={this.state.content} onChange={(e) => this.update(e)}/>
-                    <button onClick={() => editTask(task.id, this.state.content)}>Edit</button>
-                    <button onClick={() => removeTask(columnId, task.id)}>-</button>
+                    <TitleContainer>
+                        {this.props.task.content}
+                        <Button onClick={() => this.toggle()}>
+                            {this.state.editShow ? 'X' : 'O' }
+                        </Button>
+                    </TitleContainer>
+                    <EditContainer editShow={this.state.editShow}>
+                        <Input type="text" value={this.state.content} onChange={(e) => this.update(e)}/>
+                        <Button onClick={() => {editTask(task.id, this.state.content); this.toggle()}}>U</Button>
+                        <Button onClick={() => removeTask(columnId, task.id)}>-</Button>
+                    </EditContainer>
                 </Container>
                     
                 )}
