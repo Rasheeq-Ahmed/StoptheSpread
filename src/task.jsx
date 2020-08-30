@@ -1,6 +1,7 @@
-import React from 'react'
-import styled from 'styled-components'
-import {Draggable} from 'react-beautiful-dnd'
+import React from 'react';
+import styled from 'styled-components';
+import {Draggable} from 'react-beautiful-dnd';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Container = styled.div`
     border: 1px solid lightgrey;
@@ -18,7 +19,7 @@ export const EditContainer = styled.div`
    overflow-y: hidden;
    transition: 0.5s ease;
    display: flex;
-   justify-content: center;
+   justify-content: space-between;
    align-items: baseline;
    width: max-content;
 `;
@@ -27,10 +28,9 @@ export const Button = styled.p`
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid grey;
     border-radius: 2px;
-    width: 1.5em;
-    height: 1.5em;
+    width: 1.5rem;
+    height: 1.5rem;
     cursor: pointer;
 `
 
@@ -106,13 +106,13 @@ export default class Task extends React.Component {
                     <TitleContainer>
                         {this.props.task.content}
                         <Button onClick={() => this.toggle()}>
-                            {this.state.editShow ? 'X' : 'O' }
+                                {this.state.editShow ? <FontAwesomeIcon icon="chevron-circle-down" /> : <FontAwesomeIcon icon="chevron-circle-up" />}
                         </Button>
                     </TitleContainer>
                     <EditContainer editShow={this.state.editShow}>
                         <Input type="text" value={this.state.content} onChange={(e) => this.update(e)}/>
-                        <Button onClick={() => {editTask(task.id, this.state.content); this.toggle()}}>U</Button>
-                        <Button onClick={() => removeTask(columnId, task.id)}>-</Button>
+                            <Button onClick={() => { editTask(task.id, this.state.content); this.toggle() }}><FontAwesomeIcon icon="pencil-alt"/></Button>
+                            <Button onClick={() => removeTask(columnId, task.id)}><FontAwesomeIcon icon="trash" /></Button>
                     </EditContainer>
                 </Container>
                     
