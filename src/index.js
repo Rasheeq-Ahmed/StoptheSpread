@@ -148,6 +148,19 @@ class App extends React.Component {
     this.setState(newState)
   }
 
+  editTask = (taskId, text) => {
+    let { tasks } = this.state
+
+    let current = tasks;
+    current[taskId].content = text
+
+    let newState = {
+      ...this.state,
+      tasks: current
+    }
+    this.setState(newState)
+  };
+
 
   onDragStart = start => {
     const homeIndex = this.state.columnOrder.indexOf(start.source.droppableId);
@@ -279,6 +292,7 @@ class App extends React.Component {
                     editColTitle={this.editColTitle.bind(this)}
                     addTask={this.addTask.bind(this)}
                     removeTask={this.removeTask.bind(this)}
+                    editTask={this.editTask.bind(this)}
                   />
                 );
               })}
@@ -287,7 +301,7 @@ class App extends React.Component {
           )}
         </Droppable>
         <button onClick={()=> this.addCol('Hackathon')}>Add Column</button>
-        {/* <button onClick={()=> this.removeTask("column-1", "task-1")}>Remove Task</button> */}
+        {/* <button onClick={()=> this.editTask("task-1", 'Win Hackathon')}>Edit Task</button> */}
       </DragDropContext>
     );
   }

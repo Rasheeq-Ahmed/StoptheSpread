@@ -38,7 +38,7 @@ export default class Column extends React.Component {
 
    render() {
    
-    let { addTask, removeTask, editColTitle, removeCol, column } = this.props
+    let { addTask, removeTask, editTask, editColTitle, removeCol, column } = this.props
        return (
     <Draggable draggableId={this.props.column.id} index={this.props.index}>
         { provided =>(
@@ -71,7 +71,7 @@ export default class Column extends React.Component {
                     index={index}
                     columnId={column.id}
                     removeTask={removeTask}
-
+                    editTask={editTask}
                   />))}
                 {provided.placeholder}
                 </TaskList>
