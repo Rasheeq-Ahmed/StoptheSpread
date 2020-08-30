@@ -5,6 +5,7 @@ import '@atlaskit/css-reset'
 import {DragDropContext, Droppable} from 'react-beautiful-dnd'
 import Column from './column';
 import styled from 'styled-components'
+import Splash from './splash'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
@@ -23,6 +24,11 @@ const Container = styled.div`
 
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleSplash = this.handleSplash.bind(this)
+  }
   state = initialData;
 
   // onDragStart = () => {
@@ -38,53 +44,53 @@ class App extends React.Component {
   //   document.body.style.backgroundColor = `rgba(153, 141,217, ${opacity})`;
   // }
 
-  addCol = (title = 'New Group') => {
-
-    let colLength = Object.values(this.state.columns).length
-    let newColId = `column-${++colLength}`
+  addCol = (title = "New Group") => {
+    let colLength = Object.values(this.state.columns).length;
+    let newColId = `column-${++colLength}`;
 
     const newColumn = {
       id: newColId,
       title: title,
-      taskIds: []
-    }
+      taskIds: [],
+    };
 
-    let colOrder = this.state.columnOrder
-    colOrder.push(newColId)
+    let colOrder = this.state.columnOrder;
+    colOrder.push(newColId);
 
-    let newColumns = this.state.columns
-    newColumns[newColId] = newColumn
+    let newColumns = this.state.columns;
+    newColumns[newColId] = newColumn;
 
     const newState = {
       ...this.state,
       columns: {
-        ...newColumns
+        ...newColumns,
       },
 
-      columnOrder: colOrder
-    }
-    this.setState(newState)
+      columnOrder: colOrder,
+    };
+    this.setState(newState);
   };
 
   removeCol = (columnId = null) => {
-    let {columns, columnOrder } = this.state;
+    let { columns, columnOrder } = this.state;
     let newColumns = columns;
-    delete newColumns[columnId]
+    delete newColumns[columnId];
 
     let removeIdx = columnOrder.indexOf(columnId);
-    let newColumnOrder = columnOrder.slice(0, removeIdx).concat(columnOrder.slice(removeIdx+1))
-
+    let newColumnOrder = columnOrder
+      .slice(0, removeIdx)
+      .concat(columnOrder.slice(removeIdx + 1));
 
     let newState = {
       ...this.state,
       columns: {
-        ...newColumns
+        ...newColumns,
       },
-      columnOrder: newColumnOrder
-    }
+      columnOrder: newColumnOrder,
+    };
 
-    this.setState(newState)
-  }
+    this.setState(newState);
+  };
 
   editColTitle = (columnId, text) => {
     let { columns } = this.state;
@@ -94,53 +100,55 @@ class App extends React.Component {
 
     let updateCol = {
       ...columns,
-      columnId: current 
-    }
+      columnId: current,
+    };
 
     let newState = {
       ...this.state,
-      columns: updateCol
-    }
+      columns: updateCol,
+    };
 
-    this.setState(newState)
-  }
+    this.setState(newState);
+  };
 
   addTask = (columnId) => {
     let { tasks, columns } = this.state;
-    let taskLength = Object.values(tasks).length
-    let taskId = `task-${++taskLength}`
+    let taskLength = Object.values(tasks).length;
+    let taskId = `task-${++taskLength}`;
 
     let newTasks = {
       ...tasks,
       [taskId]: {
         id: taskId,
-        content: ''
-      }
+        content: "",
+      },
     };
 
-    let current = columns[columnId]
-    let currentTasks = columns[columnId].taskIds
-    currentTasks.push(taskId)
-    current.taskIds = currentTasks
+    let current = columns[columnId];
+    let currentTasks = columns[columnId].taskIds;
+    currentTasks.push(taskId);
+    current.taskIds = currentTasks;
 
     let newState = {
       ...this.state,
       columns: {
         ...this.state.columns,
-        [columnId]: current
+        [columnId]: current,
       },
       tasks: newTasks,
-    }
+    };
 
-    this.setState(newState)
-  } 
+    this.setState(newState);
+  };
 
   removeTask = (columnId, taskId) => {
     let { tasks, columns } = this.state;
 
     let currentTaskIds = columns[columnId].taskIds;
     let removeIdx = currentTaskIds.indexOf(taskId);
-    let newTaskIds = currentTaskIds.slice(0, removeIdx).concat(currentTaskIds.slice(++removeIdx))
+    let newTaskIds = currentTaskIds
+      .slice(0, removeIdx)
+      .concat(currentTaskIds.slice(++removeIdx));
 
     let newState = {
       ...this.state,
@@ -148,44 +156,43 @@ class App extends React.Component {
         ...this.state.columns,
         [columnId]: {
           ...this.state.columns[columnId],
-          taskIds: newTaskIds
-        }
-      }
-    }
+          taskIds: newTaskIds,
+        },
+      },
+    };
 
-    this.setState(newState)
-  }
+    this.setState(newState);
+  };
 
   editTask = (taskId, text) => {
-    let { tasks } = this.state
+    let { tasks } = this.state;
 
     let current = tasks;
-    current[taskId].content = text
+    current[taskId].content = text;
 
     let newState = {
       ...this.state,
-      tasks: current
-    }
-    this.setState(newState)
+      tasks: current,
+    };
+    this.setState(newState);
   };
 
-
-  onDragStart = start => {
+  onDragStart = (start) => {
     const homeIndex = this.state.columnOrder.indexOf(start.source.droppableId);
 
     this.setState({
       homeIndex,
-    })
-  }
-  
-  onDragEnd = result => {
+    });
+  };
+
+  onDragEnd = (result) => {
     this.setState({
-      homeIndex: null
-    })
+      homeIndex: null,
+    });
     // todo: reorder our column
     // document.body.style.color = "inherit";
 
-    const {destination, source, draggableId, type} = result;
+    const { destination, source, draggableId, type } = result;
 
     if (!destination) {
       return;
@@ -198,122 +205,129 @@ class App extends React.Component {
       return;
     }
 
-    if (type ==='column') {
-      const newColumnOrder = Array.from(this.state.columnOrder)
-      newColumnOrder.splice(source.index,1)
-      newColumnOrder.splice(destination.index, 0, draggableId)
+    if (type === "column") {
+      const newColumnOrder = Array.from(this.state.columnOrder);
+      newColumnOrder.splice(source.index, 1);
+      newColumnOrder.splice(destination.index, 0, draggableId);
 
       const newState = {
         ...this.state,
         columnOrder: newColumnOrder,
-      }
+      };
       this.setState(newState);
       return;
-       
     }
 
-
-
-    const start = this.state.columns[source.droppableId]
-    const finish = this.state.columns[destination.droppableId]
+    const start = this.state.columns[source.droppableId];
+    const finish = this.state.columns[destination.droppableId];
 
     if (start == finish) {
-       const newTaskIds = Array.from(start.taskIds);
-       newTaskIds.splice(source.index, 1);
-       newTaskIds.splice(destination.index, 0, draggableId);
+      const newTaskIds = Array.from(start.taskIds);
+      newTaskIds.splice(source.index, 1);
+      newTaskIds.splice(destination.index, 0, draggableId);
 
-       const newColumn = {
-         ...start,
-         taskIds: newTaskIds,
-       };
+      const newColumn = {
+        ...start,
+        taskIds: newTaskIds,
+      };
 
-       const newState = {
-         ...this.state,
-         columns: {
-           ...this.state.columns,
-           [newColumn.id]: newColumn,
-         },
-       };
+      const newState = {
+        ...this.state,
+        columns: {
+          ...this.state.columns,
+          [newColumn.id]: newColumn,
+        },
+      };
 
-       this.setState(newState);
-       return;
+      this.setState(newState);
+      return;
     }
 
     // Moving from one list to another
-       const startTaskIds = Array.from(start.taskIds);
-       startTaskIds.splice(source.index, 1);
-       const newStart = {
-         ...start,
-         taskIds: startTaskIds,
-       }
-       
-       const finishTaskIds = Array.from(finish.taskIds);
-       finishTaskIds.splice(destination.index,0, draggableId)
-       const newFinish ={
-         ...finish,
-         taskIds: finishTaskIds,
-       };
+    const startTaskIds = Array.from(start.taskIds);
+    startTaskIds.splice(source.index, 1);
+    const newStart = {
+      ...start,
+      taskIds: startTaskIds,
+    };
 
-       const newState = {
-         ...this.state,
-         columns: {
-           ...this.state.columns,
-           [newStart.id]: newStart,
-           [newFinish.id]: newFinish,
-         }
-       }
-       this.setState(newState)
+    const finishTaskIds = Array.from(finish.taskIds);
+    finishTaskIds.splice(destination.index, 0, draggableId);
+    const newFinish = {
+      ...finish,
+      taskIds: finishTaskIds,
+    };
 
+    const newState = {
+      ...this.state,
+      columns: {
+        ...this.state.columns,
+        [newStart.id]: newStart,
+        [newFinish.id]: newFinish,
+      },
+    };
+    this.setState(newState);
+  };
+
+  handleSplash(e) {
+    e.preventDefault();
+
+    this.setState({ splash: false });
   }
 
-  render(){
+  render() {
+    const splash = this.state.splash;
     return (
-      <DragDropContext
-        onDragStart={this.onDragStart}
-        // onDragUpdate={this.onDragUpdate}
-        onDragEnd={this.onDragEnd}
-      >
-        <Droppable
-          droppableId="all-columns"
-          direction="horizontal"
-          type="column"
-        >
-          {(provided) => (
-            <Container
-              {...provided.droppableProps}
-              ref={provided.innerRef}
+      <div>
+        {splash ? (
+          <Splash handleSplash={this.handleSplash} />
+        ) : (
+          <DragDropContext
+            onDragStart={this.onDragStart}
+            // onDragUpdate={this.onDragUpdate}
+            onDragEnd={this.onDragEnd}
+          >
+            <Droppable
+              droppableId="all-columns"
+              direction="horizontal"
+              type="column"
             >
-              {this.state.columnOrder.map((columnId, index) => {
-                const column = this.state.columns[columnId];
-                const tasks = column.taskIds.map(
-                  (taskId) => this.state.tasks[taskId]
-                );
-                const isDropDisabled = index < this.state.homeIndex;
-                return (
-                  <Column
-                    key={column.id}
-                    column={column}
-                    tasks={tasks}
-                    isDropDisabled={isDropDisabled}
-                    index={index}
-                    removeCol={this.removeCol.bind(this)}
-                    editColTitle={this.editColTitle.bind(this)}
-                    addTask={this.addTask.bind(this)}
-                    removeTask={this.removeTask.bind(this)}
-                    editTask={this.editTask.bind(this)}
-                  />
-                );
-              })}
-              {provided.placeholder}
-            </Container>
-          )}
-        </Droppable>
-        <button onClick={()=> this.addCol('Hackathon')}>Add Column</button>
-        {/* <button onClick={()=> this.editTask("task-1", 'Win Hackathon')}>Edit Task</button> */}
-      </DragDropContext>
+              {(provided) => (
+                <Container {...provided.droppableProps} ref={provided.innerRef}>
+                  {this.state.columnOrder.map((columnId, index) => {
+                    const column = this.state.columns[columnId];
+                    const tasks = column.taskIds.map(
+                      (taskId) => this.state.tasks[taskId]
+                    );
+                    const isDropDisabled = index < this.state.homeIndex;
+                    return (
+                      <Column
+                        key={column.id}
+                        column={column}
+                        tasks={tasks}
+                        isDropDisabled={isDropDisabled}
+                        index={index}
+                        removeCol={this.removeCol.bind(this)}
+                        editColTitle={this.editColTitle.bind(this)}
+                        addTask={this.addTask.bind(this)}
+                        removeTask={this.removeTask.bind(this)}
+                        editTask={this.editTask.bind(this)}
+                      />
+                    );
+                  })}
+                  {provided.placeholder}
+                </Container>
+              )}
+            </Droppable>
+            <button onClick={() => this.addCol("Hackathon")}>Add Column</button>
+            {/* <button onClick={()=> this.editTask("task-1", 'Win Hackathon')}>Edit Task</button> */}
+          </DragDropContext>
+        )}
+      </div>
+
+      //
     );
   }
-
 }
 
 
