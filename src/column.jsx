@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import Task from './task'
 import {Droppable, Draggable} from 'react-beautiful-dnd'
-import { Button, Input, EditContainer } from './task';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Button, Input } from './task';
 
 const Container = styled.div`
   margin: 8px;
@@ -12,9 +13,14 @@ const Container = styled.div`
   background-color: #fdffb6;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 `;
 const Title = styled.h3`
+  display: ${(props) => (!props.editShow ? "flex" : "none")};
+  justify-content: space-between;
   padding: 8px;
+  width: 80%;
 `;
 const TaskList = styled.div`
   padding: 8px;
@@ -23,13 +29,20 @@ const TaskList = styled.div`
   min-height: 100px;
 `;
 
+export const EditContainer = styled.div`
+   display: ${(props) => (props.editShow ? "flex" : "none")};
+   justify-content: space-between;
+   align-items: baseline;
+   width: max-content;
+`;
+
 
 export default class Column extends React.Component {
     constructor(props) {
       super(props)
 
       this.state = {
-        title: '',
+        title: this.props.column.title,
         editShow: false
       }
     }
@@ -51,16 +64,16 @@ export default class Column extends React.Component {
 
             <Container {...provided.draggableProps} 
             ref={provided.innerRef}>
-            <Title {...provided.dragHandleProps}>
-            {this.props.column.title}
+            <Title {...provided.dragHandleProps} editShow={this.state.editShow}>
+                 {this.props.column.title}
                  <Button onClick={() => this.toggle()}>
-                   {this.state.editShow ? 'X' : 'O'}
+                   <FontAwesomeIcon icon="user-edit" />
                  </Button>
             </Title>
               <EditContainer editShow={this.state.editShow}>
-                <Input type="text" value={this.state.title} onChange={(e) => this.update(e)}/>
-                <Button onClick={() => {editColTitle(column.id, this.state.title ); this.toggle()}}>E</Button>
-                <Button onClick={() => removeCol(column.id)}>-</Button>
+                 <Input type="text" value={this.state.title} onChange={(e) => this.update(e)}/>
+                 <Button onClick={() => { editColTitle(column.id, this.state.title); this.toggle() }}><FontAwesomeIcon icon="pencil-alt" /></Button>
+                 <Button onClick={() => removeCol(column.id)}><FontAwesomeIcon icon="trash" /></Button>
               </EditContainer>
 
             <Droppable 
