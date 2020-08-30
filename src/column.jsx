@@ -3,7 +3,8 @@ import styled from 'styled-components'
 import Task from './task'
 import {Droppable, Draggable} from 'react-beautiful-dnd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Button, Input } from './task';
+import { Button } from './task';
+import { AddTask } from './add_task'
 
 const Container = styled.div`
   margin: 8px;
@@ -22,6 +23,7 @@ const Title = styled.h3`
   padding: 8px;
   width: 80%;
 `;
+
 const TaskList = styled.div`
   padding: 8px;
   background-color: ${(props) => (props.isDraggingOver ? "skyblue" : "inherit")};
@@ -33,8 +35,24 @@ export const EditContainer = styled.div`
    display: ${(props) => (props.editShow ? "flex" : "none")};
    justify-content: space-between;
    align-items: baseline;
-   width: max-content;
+   margin-bottom: 8px;
+   width: 80%;
 `;
+
+const DeleteContainer = styled.div`
+   display: ${(props) => (props.deleteShow ? "flex" : "none")};
+   justify-content: space-around;
+   align-items: baseline;
+   width: 80%;
+
+   & > button {
+        cursor: pointer;
+   };
+`;
+
+const Input = styled.input`
+    width: 60%;
+`
 
 
 export default class Column extends React.Component {
@@ -43,7 +61,8 @@ export default class Column extends React.Component {
 
       this.state = {
         title: this.props.column.title,
-        editShow: false
+        editShow: false,
+        deleteShow: false,
       }
     }
 
@@ -52,8 +71,9 @@ export default class Column extends React.Component {
     }
 
     toggle = () => {
-    this.setState({ editShow: !this.state.editShow })
-    } 
+      this.setState({ editShow: !this.state.editShow })
+    }
+    
 
     render() {
    
@@ -65,16 +85,21 @@ export default class Column extends React.Component {
             <Container {...provided.draggableProps} 
             ref={provided.innerRef}>
             <Title {...provided.dragHandleProps} editShow={this.state.editShow}>
-                 {this.props.column.title}
+                  {this.props.column.title}
                  <Button onClick={() => this.toggle()}>
                    <FontAwesomeIcon icon="user-edit" />
                  </Button>
             </Title>
-              <EditContainer editShow={this.state.editShow}>
+            <EditContainer editShow={this.state.editShow}>
                  <Input type="text" value={this.state.title} onChange={(e) => this.update(e)}/>
                  <Button onClick={() => { editColTitle(column.id, this.state.title); this.toggle() }}><FontAwesomeIcon icon="pencil-alt" /></Button>
-                 <Button onClick={() => removeCol(column.id)}><FontAwesomeIcon icon="trash" /></Button>
-              </EditContainer>
+                 <Button onClick={() => {this.setState({deleteShow: !this.state.deleteShow})}}><FontAwesomeIcon icon="trash" /></Button>
+            </EditContainer>
+            <DeleteContainer deleteShow={this.state.deleteShow}>
+                 <p>Delete Column?</p>
+                 <button onClick={() => removeCol(column.id)}>Yes</button>
+                 <button onClick={() => { this.setState({ deleteShow: !this.state.deleteShow })}}>No</button>
+            </DeleteContainer>
 
             <Droppable 
             droppableId={this.props.column.id}
@@ -102,7 +127,8 @@ export default class Column extends React.Component {
                 </TaskList>
                 )}
             </Droppable>
-            <button onClick={()=>addTask(column.id)}>Add Task</button>
+                <AddTask addTask={addTask} columnId={column.id}/>
+               {/* <AddTask onClick={() => addTask(column.id)}><FontAwesomeIcon icon="plus" /> Add Task</AddTask> */}
         </Container>
         )}
     </Draggable>

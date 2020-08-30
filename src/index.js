@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom';
 import initialData from './initial-data';
 import '@atlaskit/css-reset'
 import {DragDropContext, Droppable} from 'react-beautiful-dnd'
+import styled from 'styled-components';
 import Column from './column';
-import styled from 'styled-components'
+import {AddColumn} from './add_column';
 import Splash from './splash'
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { fas } from '@fortawesome/free-solid-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons' ;
 
 library.add(fab, fas, far)
@@ -20,9 +21,6 @@ const Container = styled.div`
 `;
 
 
-
-
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -30,7 +28,6 @@ class App extends React.Component {
     this.handleSplash = this.handleSplash.bind(this)
   }
   state = initialData;
-
   // onDragStart = () => {
   //   document.body.style.color = 'orange';
   //   document.body.style.transition = 'background-color 0.2s ease';
@@ -111,7 +108,7 @@ class App extends React.Component {
     this.setState(newState);
   };
 
-  addTask = (columnId) => {
+  addTask = (columnId, content="") => {
     let { tasks, columns } = this.state;
     let taskLength = Object.values(tasks).length;
     let taskId = `task-${++taskLength}`;
@@ -120,8 +117,9 @@ class App extends React.Component {
       ...tasks,
       [taskId]: {
         id: taskId,
-        content: "",
-      },
+        content: content,
+        details: ""
+      }
     };
 
     let current = columns[columnId];
@@ -164,11 +162,11 @@ class App extends React.Component {
     this.setState(newState);
   };
 
-  editTask = (taskId, text) => {
-    let { tasks } = this.state;
+  editTask = (taskId, param, text) => {
+    let { tasks } = this.state
 
     let current = tasks;
-    current[taskId].content = text;
+    current[taskId][param] = text
 
     let newState = {
       ...this.state,
@@ -319,7 +317,8 @@ class App extends React.Component {
                 </Container>
               )}
             </Droppable>
-            <button onClick={() => this.addCol("Hackathon")}>Add Column</button>
+            <AddColumn addCol={this.addCol.bind(this)}/>
+            {/* <button onClick={() => this.addCol("Hackathon")}>Add Column</button> */}
             {/* <button onClick={()=> this.editTask("task-1", 'Win Hackathon')}>Edit Task</button> */}
           </DragDropContext>
         )}
