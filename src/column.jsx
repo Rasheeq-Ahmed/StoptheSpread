@@ -24,9 +24,21 @@ const TaskList = styled.div`
 
 
 export default class Column extends React.Component {
+    constructor(props) {
+      super(props)
+
+      this.state = {
+        title: ''
+      }
+    }
+
+    update(e) {
+      this.setState({title: e.currentTarget.value})
+    }
+
    render() {
    
-    let { removeCol, column } = this.props
+    let { addTask, removeTask, editTask, editColTitle, removeCol, column } = this.props
        return (
     <Draggable draggableId={this.props.column.id} index={this.props.index}>
         { provided =>(
@@ -36,7 +48,8 @@ export default class Column extends React.Component {
             <Title {...provided.dragHandleProps}>
             {this.props.column.title}
             </Title>
-            <input type="text"/>
+            <input type="text" value={this.state.title} onChange={(e) => this.update(e)}/>
+            <button onClick={() => editColTitle(column.id, this.state.title )}>Edit</button>
             <button onClick={() => removeCol(column.id)}>Remove</button>
             <Droppable 
             droppableId={this.props.column.id}
@@ -50,11 +63,21 @@ export default class Column extends React.Component {
                     {...provided.droppableProps}
                     isDraggingOver={snapshot.isDraggingOver}
                     >
-                {this.props.tasks.map((task, index) => <Task key={task.id} task={task} index={index}/>)}
+                {this.props.tasks.map((task, index) => (
+                
+                  <Task 
+                    key={task.id} 
+                    task={task} 
+                    index={index}
+                    columnId={column.id}
+                    removeTask={removeTask}
+                    editTask={editTask}
+                  />))}
                 {provided.placeholder}
                 </TaskList>
                 )}
             </Droppable>
+            <button onClick={()=>addTask(column.id)}>Add Task</button>
         </Container>
         )}
     </Draggable>

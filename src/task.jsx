@@ -10,6 +10,7 @@ const Container = styled.div`
     background-color: ${props => (props.isDragDisabled ? 'lightgrey': props.isDragging ? 'lightgreen' : 'white')};
 
     display: flex;
+    flex-direction: column;
 `;
 
 
@@ -26,7 +27,21 @@ const Container = styled.div`
 
 
 export default class Task extends React.Component {
+
+    constructor(props){
+        super(props)
+
+        this.state = {
+            content: ''
+        }
+    }
+
+    update = (e) => {
+        this.setState({content: e.currentTarget.value})
+    }
+
     render() {
+        let { editTask, removeTask, task, columnId } = this.props
         const isDragDisabled = this.props.task.id === 'task-1'
         return (
             <Draggable 
@@ -46,6 +61,9 @@ export default class Task extends React.Component {
                 >
                     {/* <Handle {...provided.dragHandleProps}/> */}
                     {this.props.task.content}
+                    <input type="text" value={this.state.content} onChange={(e) => this.update(e)}/>
+                    <button onClick={() => editTask(task.id, this.state.content)}>Edit</button>
+                    <button onClick={() => removeTask(columnId, task.id)}>-</button>
                 </Container>
                     
                 )}
