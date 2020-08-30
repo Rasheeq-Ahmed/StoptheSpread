@@ -38,7 +38,7 @@ export default class Column extends React.Component {
 
    render() {
    
-    let { editColTitle, removeCol, column } = this.props
+    let { addTask, removeTask, editColTitle, removeCol, column } = this.props
        return (
     <Draggable draggableId={this.props.column.id} index={this.props.index}>
         { provided =>(
@@ -63,11 +63,21 @@ export default class Column extends React.Component {
                     {...provided.droppableProps}
                     isDraggingOver={snapshot.isDraggingOver}
                     >
-                {this.props.tasks.map((task, index) => <Task key={task.id} task={task} index={index}/>)}
+                {this.props.tasks.map((task, index) => (
+                
+                  <Task 
+                    key={task.id} 
+                    task={task} 
+                    index={index}
+                    columnId={column.id}
+                    removeTask={removeTask}
+
+                  />))}
                 {provided.placeholder}
                 </TaskList>
                 )}
             </Droppable>
+            <button onClick={()=>addTask(column.id)}>Add Task</button>
         </Container>
         )}
     </Draggable>

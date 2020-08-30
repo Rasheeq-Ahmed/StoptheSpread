@@ -27,6 +27,7 @@ const Container = styled.div`
 
 export default class Task extends React.Component {
     render() {
+        let { removeTask, task, columnId } = this.props
         const isDragDisabled = this.props.task.id === 'task-1'
         return (
             <Draggable 
@@ -46,6 +47,7 @@ export default class Task extends React.Component {
                 >
                     {/* <Handle {...provided.dragHandleProps}/> */}
                     {this.props.task.content}
+                    <button onClick={() => removeTask(columnId, task.id)}>-</button>
                 </Container>
                     
                 )}

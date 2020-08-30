@@ -56,7 +56,6 @@ class App extends React.Component {
       columnOrder: colOrder
     }
     this.setState(newState)
-    console.log(this.state)
   };
 
   removeCol = (columnId = null) => {
@@ -93,6 +92,57 @@ class App extends React.Component {
     let newState = {
       ...this.state,
       columns: updateCol
+    }
+
+    this.setState(newState)
+  }
+
+  addTask = (columnId) => {
+    let { tasks, columns } = this.state;
+    let taskLength = Object.values(tasks).length
+    let taskId = `task-${++taskLength}`
+
+    let newTasks = {
+      ...tasks,
+      [taskId]: {
+        id: taskId,
+        content: ''
+      }
+    };
+
+    let current = columns[columnId]
+    let currentTasks = columns[columnId].taskIds
+    currentTasks.push(taskId)
+    current.taskIds = currentTasks
+
+    let newState = {
+      ...this.state,
+      columns: {
+        ...this.state.columns,
+        [columnId]: current
+      },
+      tasks: newTasks,
+    }
+
+    this.setState(newState)
+  } 
+
+  removeTask = (columnId, taskId) => {
+    let { tasks, columns } = this.state;
+
+    let currentTaskIds = columns[columnId].taskIds;
+    let removeIdx = currentTaskIds.indexOf(taskId);
+    let newTaskIds = currentTaskIds.slice(0, removeIdx).concat(currentTaskIds.slice(++removeIdx))
+
+    let newState = {
+      ...this.state,
+      columns: {
+        ...this.state.columns,
+        [columnId]: {
+          ...this.state.columns[columnId],
+          taskIds: newTaskIds
+        }
+      }
     }
 
     this.setState(newState)
@@ -227,6 +277,8 @@ class App extends React.Component {
                     index={index}
                     removeCol={this.removeCol.bind(this)}
                     editColTitle={this.editColTitle.bind(this)}
+                    addTask={this.addTask.bind(this)}
+                    removeTask={this.removeTask.bind(this)}
                   />
                 );
               })}
@@ -234,8 +286,8 @@ class App extends React.Component {
             </Container>
           )}
         </Droppable>
-        <button onClick={()=> this.addCol('Hackathon')}>Add</button>
-        {/* <button onClick={()=> this.editColTitle("column-1", "Dinner")}>Edit</button> */}
+        <button onClick={()=> this.addCol('Hackathon')}>Add Column</button>
+        {/* <button onClick={()=> this.removeTask("column-1", "task-1")}>Remove Task</button> */}
       </DragDropContext>
     );
   }
