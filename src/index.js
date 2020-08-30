@@ -60,7 +60,7 @@ class App extends React.Component {
   };
 
   removeCol = (columnId = null) => {
-    let {columns, columnOrder } = this.state
+    let {columns, columnOrder } = this.state;
     let newColumns = columns;
     delete newColumns[columnId]
 
@@ -74,6 +74,25 @@ class App extends React.Component {
         ...newColumns
       },
       columnOrder: newColumnOrder
+    }
+
+    this.setState(newState)
+  }
+
+  editColTitle = (columnId, text) => {
+    let { columns } = this.state;
+
+    let current = columns[columnId];
+    current.title = text;
+
+    let updateCol = {
+      ...columns,
+      columnId: current 
+    }
+
+    let newState = {
+      ...this.state,
+      columns: updateCol
     }
 
     this.setState(newState)
@@ -206,6 +225,8 @@ class App extends React.Component {
                     tasks={tasks}
                     isDropDisabled={isDropDisabled}
                     index={index}
+                    removeCol={this.removeCol.bind(this)}
+                    editColTitle={this.editColTitle.bind(this)}
                   />
                 );
               })}
@@ -214,7 +235,7 @@ class App extends React.Component {
           )}
         </Droppable>
         <button onClick={()=> this.addCol('Hackathon')}>Add</button>
-        <button onClick={()=> this.removeCol("column-1")}>Remove</button>
+        <button onClick={()=> this.editColTitle("column-1", "Dinner")}>Edit</button>
       </DragDropContext>
     );
   }
