@@ -30,7 +30,7 @@ class App extends React.Component {
   //   document.body.style.backgroundColor = `rgba(153, 141,217, ${opacity})`;
   // }
 
-  add = (title = 'New Group') => {
+  addCol = (title = 'New Group') => {
 
     let colLength = Object.values(this.state.columns).length
     let newColId = `column-${++colLength}`
@@ -59,6 +59,25 @@ class App extends React.Component {
     console.log(this.state)
   };
 
+  removeCol = (columnId = null) => {
+    let {columns, columnOrder } = this.state
+    let newColumns = columns;
+    delete newColumns[columnId]
+
+    let removeIdx = columnOrder.indexOf(columnId);
+    let newColumnOrder = columnOrder.slice(0, removeIdx).concat(columnOrder.slice(removeIdx+1))
+
+
+    let newState = {
+      ...this.state,
+      columns: {
+        ...newColumns
+      },
+      columnOrder: newColumnOrder
+    }
+
+    this.setState(newState)
+  }
 
 
   onDragStart = start => {
@@ -194,7 +213,8 @@ class App extends React.Component {
             </Container>
           )}
         </Droppable>
-        <button onClick={()=> this.add('Hackathon')}>Add</button>
+        <button onClick={()=> this.addCol('Hackathon')}>Add</button>
+        <button onClick={()=> this.removeCol("column-1")}>Remove</button>
       </DragDropContext>
     );
   }
