@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom';
 import initialData from './initial-data';
 import '@atlaskit/css-reset'
 import {DragDropContext, Droppable} from 'react-beautiful-dnd'
+import styled from 'styled-components';
 import Column from './column';
-import styled from 'styled-components'
+import {AddColumn} from './add_column';
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { fas } from '@fortawesome/free-solid-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons' ;
 
 library.add(fab, fas, far)
@@ -308,7 +309,8 @@ class App extends React.Component {
             </Container>
           )}
         </Droppable>
-        <button onClick={()=> this.addCol('Hackathon')}>Add Column</button>
+        <AddColumn addCol={this.addCol}/>
+        {/* <button onClick={()=> this.addCol('Hackathon')}>Add Column</button> */}
         {/* <button onClick={()=> this.editTask("task-1", 'Win Hackathon')}>Edit Task</button> */}
       </DragDropContext>
     );

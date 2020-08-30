@@ -36,6 +36,20 @@ export const EditContainer = styled.div`
    width: max-content;
 `;
 
+const AddTask = styled.div`
+    border: 1px solid lightgrey;
+    width: 180px;
+    border-radius: 2px;
+    padding: 8px;
+    margin-bottom: 8px;
+    background: white;
+    cursor: pointer;
+
+    &:hover {
+      background: gray;
+    }
+`
+
 
 export default class Column extends React.Component {
     constructor(props) {
@@ -102,7 +116,7 @@ export default class Column extends React.Component {
                 </TaskList>
                 )}
             </Droppable>
-            <button onClick={()=>addTask(column.id)}>Add Task</button>
+               <AddTask onClick={() => addTask(column.id)}><FontAwesomeIcon icon="plus" /> Add Task</AddTask>
         </Container>
         )}
     </Draggable>
