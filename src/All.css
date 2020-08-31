@@ -1,6 +1,8 @@
 
 * {
     box-sizing: border-box;
+    text-decoration: none;
+
 }
 
 button {
@@ -21,15 +23,20 @@ button {
 
 .splash-title{
     width: 100%;
-    height: 5em;
-    background-color: #51dd22;
+    /* height: 5em; */
+    background-color: #023e8a;
     /* position: absolute; */
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 5;
     font-size: 1.75em;
-    padding: 0;
+    padding: .5em;
+
+}
+
+.splash-title > h1 {
+    color: white;
 }
 
 .splash-body {
@@ -70,7 +77,7 @@ button {
     display: flex;
     /* align-items: center; */
     justify-content: center;
-    font-size: 1em;
+    font-size: 1.5em;
     border-bottom: 1px rgba(0, 0, 0, 0.089) solid;
 
 }
@@ -82,7 +89,7 @@ button {
 
 .splash-subtext{
     width: 90%;
-
+    font-size: 1.5em;
     height: 50%;
     /* border: 4px solid black; */
     /* display: flex; */
@@ -137,7 +144,7 @@ button {
     width: 5em;
     height: 100vh;
     position: fixed;
-    background-color: gray;
+    background-color: #2396dd;
     transition: width ease 200ms;
 }
 
@@ -161,8 +168,12 @@ button {
 }
 .nav-item:hover {
     width: 100%;
-    background-color:rgb(85, 85, 85);
+    background-color: #03055e8a;
     transition: ease 0.5s;
+    fill: white;
+    text-decoration: none;
+
+
 
 }
 
@@ -179,9 +190,12 @@ button {
 .link-text {
     display: none;
     margin-left: 1em;
+    text-decoration: none;
+    color: white;
+
 }
 
-.nav-link svg {
+.nav-link > svg {
     min-width: 2.5em;
     margin: 0 1.5em
 }
@@ -196,5 +210,11 @@ svg:hover {
 }
 
 .navbar:hover .link-text {
-    display: block;
+    display: inline-flex ;
+    text-decoration: none;
+
+    
 }
+
+
+
