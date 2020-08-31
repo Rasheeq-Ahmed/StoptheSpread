@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Container = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
   margin: 8px;
   border: 1px solid lightgrey;
   border-radius: 2px;
