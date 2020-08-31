@@ -16,8 +16,8 @@ const Container = styled.div`
 `;
 
 const StatusContainer = styled.div`
-   max-height: ${(props) => (props.statusShow ? "10em" : "0")};
-   opacity: ${(props) => (props.statusShow ? 1 : 0)};
+   max-height: ${(props) => (props.priority !== 'high' && props.statusShow ? "10em" : "0")};
+   opacity: ${(props) => (props.priority !== 'high' && props.statusShow ? 1 : 0)};
    overflow-y: hidden;
    transition: 0.5s ease;
    display: flex;
@@ -108,6 +108,10 @@ export const TitleContainer = styled.div`
    & > span {
        font-weight: bold;
    }
+
+   & > span:last-child {
+       cursor: pointer;
+   }
 `;
 
 
@@ -141,6 +145,7 @@ export default class Task extends React.Component {
     }
 
     update = (e, param) => {
+        e.preventDefault();
         this.setState({[param]: e.currentTarget.value});
     };
 
@@ -226,7 +231,7 @@ export default class Task extends React.Component {
                         <Input type="text" placeholder="Change Detail" value={this.state.detail} onChange={(e) => this.update(e, 'detail')} />
                             <Button onClick={this.state.detail !== "" ? () => { editTask(task.id, "details", this.state.detail); this.toggle("editDetailShow") } : ()=> this.toggle("editDetailShow")}><FontAwesomeIcon icon="pen-fancy" /></Button>
                     </EditDetail> */}
-                    <StatusContainer statusShow={this.state.statusShow}>
+                    <StatusContainer statusShow={this.state.statusShow} priority={task.priority}>
                             <Button onClick={this.state.currentEdit !== 'content' ? () => this.setState({currentEdit: 'content', editShow: true}): ()=>this.toggle('editShow', task)}><FontAwesomeIcon icon="marker" />Title</Button> 
                             <Button onClick={this.state.currentEdit !== 'details' ? () => {this.setState({currentEdit: 'details', editShow: true})} : ()=>this.toggle('editShow', task)}><FontAwesomeIcon icon="pen-fancy" />Details</Button>
                             <Button onClick={()=> removeTask(columnId,task.id)}><FontAwesomeIcon icon="trash" />Delete</Button>

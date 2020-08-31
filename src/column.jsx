@@ -18,6 +18,7 @@ const Container = styled.div`
   justify-content: space-around;
   align-items: center;
   height: fit-content;
+  margin-top: 5em;
 `;
 const Title = styled.h3`
   display: ${(props) => (!props.editShow ? "flex" : "none")};
@@ -25,6 +26,10 @@ const Title = styled.h3`
   align-items: center;
   padding: 8px;
   width: 80%;
+
+  & > span:last-child {
+    display: ${(props) => (props.priority !== 'high' ? "flex" : "none")}
+  }
 `;
 
 const TaskList = styled.div`
@@ -78,6 +83,7 @@ export default class Column extends React.Component {
     }
 
     update(e) {
+      e.preventDefault();
       this.setState({title: e.currentTarget.value})
     }
 
@@ -105,7 +111,7 @@ export default class Column extends React.Component {
 
             <Container {...provided.draggableProps} 
             ref={provided.innerRef}>
-            <Title {...provided.dragHandleProps} editShow={this.state.editShow}>
+            <Title {...provided.dragHandleProps} editShow={this.state.editShow} priority={column.priority}>
                   <span>{this.props.column.title}</span>
                  <Button onClick={() => this.toggle()}>
                    <FontAwesomeIcon icon="user-edit" />
