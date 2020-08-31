@@ -16,7 +16,12 @@ export const Resources = (props) => {
     return (
         <Container resource={props.resource}>
         <div className="resource-all">
-            Hello World
+            <div className="resource-title">
+                Resources
+            </div>
+            <div className="resource-body">
+                
+            </div>
         </div>
         </Container>
     )

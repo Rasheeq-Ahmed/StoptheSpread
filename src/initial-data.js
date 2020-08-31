@@ -1,7 +1,7 @@
 const initialData = {
   tasks: {
-    "task-1": { id: "task-1", content: "Take out the garbarge", details: "By 5pm Monday", priority: 'high' },
-    "task-2": { id: "task-2", content: "Watch my favorite show", details: "Friends", priority: 'low' },
+    "task-1": { id: "task-1", content: "Wear a mask in public", details: "By 5pm Monday", priority: 'high' },
+    "task-2": { id: "task-2", content: "Order Takeout", details: "Friends", priority: 'low' },
     "task-3": { id: "task-3", content: "Charge my phone", details: "" },
     "task-4": { id: "task-4", content: "Cook dinner", details: "" },
   },

@@ -23,8 +23,8 @@ class App extends React.Component {
     this.state = {
       splash: false,
       board: false,
-      info: true,
-      resource: false,
+      info: false,
+      resource: true,
     }
     this.handleSplash = this.handleSplash.bind(this);
     this.toggle = this.toggle.bind(this);
@@ -70,7 +70,7 @@ class App extends React.Component {
           <div className='splash-title'>
             <h1>Stop The Spread</h1>
           </div>
-          <Sidebar toggle={this.toggle}/>
+          <Sidebar toggle={this.toggle} info={this.state.info} board={this.state.board} resource={this.state.resource}/>
           <Info info={this.state.info}/>
           <Board board={this.state.board}/>
           <Resources resource={this.state.resource}/> 
