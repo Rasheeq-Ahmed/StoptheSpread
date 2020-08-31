@@ -27,7 +27,7 @@ align-items: center;
 
 
 .about-body {
-    height: 90%; 
+    height: 50%; 
     width: 90%;
     /* background-color: rgb(201, 85, 85); */
     display: flex;

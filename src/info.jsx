@@ -40,7 +40,6 @@ export const Info = (props) => {
                             <h1>Dear Mintbeans, 
                                 <br />
                                 we have saved you from this!</h1>
-                            <span className='get-started-btn'>Get Started</span>
                         </div>
                     <img 
                         className='kanban-board'
