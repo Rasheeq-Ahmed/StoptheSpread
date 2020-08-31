@@ -1,6 +1,6 @@
 .about-all {
     width: 100%;
-    height: 250vh;
+    height: 300vh;
     display: flex;
     background-color: whitesmoke;
     flex-direction: column;
@@ -64,7 +64,10 @@ align-items: center;
     align-items: center;
     width: 70em;
     height: 20em;
+    margin-bottom: 2em; 
 }
+
+
 
 .kanban-pics {
     position: absolute;
@@ -195,6 +198,7 @@ align-items: center;
 .tech-title {
     font-size: 30px;
     font-weight: bold;
+    margin-bottom: 2em;
 }
 .tech-icons {
     width: 100%;

@@ -47,11 +47,11 @@ export const Info = (props) => {
                         src="https://lh5.googleusercontent.com/NxOTs7vImwFMmQnfI_pTg7Es6ZeGPL1AcJaHRrXURM0IaRVi64WFeWschD9paRwJ8MVR4EnQ6P7R8D3mEpHB7PAy648lejPuQ3FrTP3-igSBy23dDhU=w1280" alt=""/>
                     </header>
                     <div className='info-body'>
-                        <div className='info-body-left'>
+                        
                             <img id={current === 1 ? '' : 'hide'} className='kanban-pics' src={"./kanban1.png"} alt=""/>
                             <img id={current === 2 ? '' : 'hide'} className='kanban-pics' src={"./kanban3.png"} alt="" />
                             <img id={current === 3 ? '' : 'hide'} className='kanban-pics' src={"./kanban2.png"} alt="" />
-                        </div>
+                        
 
                         <div className='info-body-left'>
                             <ul> 
@@ -66,7 +66,18 @@ export const Info = (props) => {
                                 </h3>
                             </ul>
                         </div>
-
+                    </div>
+                    <div className='info-body'>
+                        <div className='covid-body-left'>
+                            <ul>
+                                <h3>Know all the symptoms</h3>
+                                <h3>Remember to social distance</h3>
+                                <h3>Please put on a Mask</h3>
+                            </ul>
+                        </div>
+                        <div className='covid-body-right'>
+                            <img className ='kanban-board'src="https://www.npr.org/assets/img/2020/04/10/covid_asymptomic_NPR_10Apr.gif" alt=""/>
+                        </div>
                     </div>
                 </div>
                 <div className="about-body">
