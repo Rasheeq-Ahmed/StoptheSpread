@@ -15,7 +15,7 @@ export const Resources = (props) => {
 
     return (
         <Container resource={props.resource}>
-        <div>
+        <div className="resource-all">
             Hello World
         </div>
         </Container>

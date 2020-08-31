@@ -20,7 +20,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      splash: true,
+      splash: false,
       board: false,
       info: false,
       resource: false,
