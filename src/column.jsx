@@ -22,6 +22,7 @@ const Container = styled.div`
 const Title = styled.h3`
   display: ${(props) => (!props.editShow ? "flex" : "none")};
   justify-content: space-between;
+  align-items: center;
   padding: 8px;
   width: 80%;
 `;
@@ -29,7 +30,6 @@ const Title = styled.h3`
 const TaskList = styled.div`
   padding: 8px;
   background-color: ${(props) => (props.isDraggingOver ? "skyblue" : "inherit")};
-
   overflow-y: scroll;
 `;
 
@@ -106,7 +106,7 @@ export default class Column extends React.Component {
             <Container {...provided.draggableProps} 
             ref={provided.innerRef}>
             <Title {...provided.dragHandleProps} editShow={this.state.editShow}>
-                  {this.props.column.title}
+                  <span>{this.props.column.title}</span>
                  <Button onClick={() => this.toggle()}>
                    <FontAwesomeIcon icon="user-edit" />
                  </Button>
