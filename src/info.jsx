@@ -70,9 +70,10 @@ export const Info = (props) => {
                     <div className='info-body'>
                         <div className='covid-body-left'>
                             <ul>
-                                <h3>Know all the symptoms</h3>
-                                <h3>Remember to social distance</h3>
-                                <h3>Please put on a Mask</h3>
+                                <h3>Wear a mask</h3>
+                                <h3>Wash your hands</h3>
+                                <h3>Keep a safe distance</h3>
+                                <h2>Continue Hacking</h2>
                             </ul>
                         </div>
                         <div className='covid-body-right'>

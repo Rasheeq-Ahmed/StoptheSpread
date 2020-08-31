@@ -92,6 +92,17 @@ align-items: center;
     height: 1em;
 }
 
+.covid-body-left {
+    margin-right: 5em;
+}
+
+.covid-body-left ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .about-people-all {
     /* background-color:rgb(5, 116, 116); */
     height: 70%;

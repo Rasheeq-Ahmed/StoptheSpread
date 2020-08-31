@@ -46,6 +46,7 @@ export const EditContainer = styled.div`
    margin-bottom: 8px;
    width: 90%;
    height: 10%;
+   margin-top: 1em;
 `;
 
 const DeleteContainer = styled.div`
@@ -68,6 +69,7 @@ const DeleteContainer = styled.div`
 
 const Input = styled.input`
     width: 70%;
+    height: 2em;
 `
 const Button = styled.span`
     display: flex;
