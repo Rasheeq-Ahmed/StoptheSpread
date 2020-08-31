@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/StoptheSpread/static/css/main.148f23b4.chunk.css",
-    "main.js": "/StoptheSpread/static/js/main.6518a9fa.chunk.js",
-    "main.js.map": "/StoptheSpread/static/js/main.6518a9fa.chunk.js.map",
+    "main.js": "/StoptheSpread/static/js/main.a5419d16.chunk.js",
+    "main.js.map": "/StoptheSpread/static/js/main.a5419d16.chunk.js.map",
     "runtime-main.js": "/StoptheSpread/static/js/runtime-main.2d6f83cc.js",
     "runtime-main.js.map": "/StoptheSpread/static/js/runtime-main.2d6f83cc.js.map",
     "static/css/2.3107b260.chunk.css": "/StoptheSpread/static/css/2.3107b260.chunk.css",
     "static/js/2.02ce7d8b.chunk.js": "/StoptheSpread/static/js/2.02ce7d8b.chunk.js",
     "static/js/2.02ce7d8b.chunk.js.map": "/StoptheSpread/static/js/2.02ce7d8b.chunk.js.map",
     "index.html": "/StoptheSpread/index.html",
-    "precache-manifest.d7a756ca70054a33b7cf716b6d5cbdae.js": "/StoptheSpread/precache-manifest.d7a756ca70054a33b7cf716b6d5cbdae.js",
+    "precache-manifest.4e5fdf335bb711bdd7503e8c1bbf3d40.js": "/StoptheSpread/precache-manifest.4e5fdf335bb711bdd7503e8c1bbf3d40.js",
     "service-worker.js": "/StoptheSpread/service-worker.js",
     "static/css/2.3107b260.chunk.css.map": "/StoptheSpread/static/css/2.3107b260.chunk.css.map",
     "static/css/main.148f23b4.chunk.css.map": "/StoptheSpread/static/css/main.148f23b4.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.3107b260.chunk.css",
     "static/js/2.02ce7d8b.chunk.js",
     "static/css/main.148f23b4.chunk.css",
-    "static/js/main.6518a9fa.chunk.js"
+    "static/js/main.a5419d16.chunk.js"
   ]
 }
