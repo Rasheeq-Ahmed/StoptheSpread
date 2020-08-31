@@ -15,7 +15,7 @@ const Container = styled.div`
   align-items: center;
 `;
 
-const AddButton = styled.p`
+const AddButton = styled.span`
     display: ${(props) => (!props.add ? "flex" : "none")};
     align-items: center;
     cursor: pointer;
@@ -65,7 +65,7 @@ export const AddColumn = (props) => {
         setAdd(!add)
         setTitle('')
         input.current.value = ''
-    }
+    };
 
     const useOnClickOutside = (ref, handler) => {
         useEffect(
@@ -89,23 +89,37 @@ export const AddColumn = (props) => {
             [ref, handler]
         );
     // Special thanks to Easy to understand React Hook recipes by Gabe Ragland!!
-    }
+    };
+
+    const show = (
+    <Container onClick={useOnClickOutside(edit, () => setAdd(false))} colOrder={props.colOrder}>
+        <AddButton onClick={() => setAdd(!add)} add={add}>
+            <Button><FontAwesomeIcon icon="plus" /></Button>
+                Add Column
+        </AddButton>
+        <EditContainer add={add} ref={edit}>
+            <Input placeholder='Enter a title' ref={input} onChange={(e) => setTitle(e.currentTarget.value)}></Input>
+
+            <ButtonContainer>
+                <button onClick={title.length ? () => { props.addCol(title); reset(); } : () => setAdd(!add)}>Add Column</button>
+                <button onClick={() => reset()}><FontAwesomeIcon icon="times" /></button>
+            </ButtonContainer>
+        </EditContainer>
+    </Container>
+    );
+
+    const toMany = (
+        <Container > 
+            <AddButton>
+                <Button><FontAwesomeIcon icon="" /> </Button>Max Columns Reached <br/>
+            </AddButton>
+        </Container>
+    );
+
+
 
     return (
-        <Container onClick={useOnClickOutside(edit, ()=>setAdd(false))}>
-            <AddButton onClick={() => setAdd(!add)} add={add}>
-                <Button><FontAwesomeIcon icon="plus" /></Button>
-                Add Column
-            </AddButton>
-            <EditContainer add={add} ref={edit}>
-                <Input placeholder='Enter a title' ref={input} onChange={(e) => setTitle(e.currentTarget.value)}></Input>
-
-                <ButtonContainer>
-                    <button onClick={ title.length ? () => {props.addCol(title); reset();} : () => setAdd(!add)}>Add Column</button>
-                    <button onClick={()=>reset()}><FontAwesomeIcon icon="times" /></button>
-                </ButtonContainer>
-            </EditContainer>
-        </Container>
-    )
+        props.colOrder.length < 11 ? show : toMany
+    );
 
 }
