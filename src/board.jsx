@@ -9,7 +9,7 @@ const Container = styled.div`
   display: ${(props) => (props.board ? "flex" : "none")};
   margin-left: 5em;
   background-color: #caf0f8;
-  justify-content: space-evenly;
+  justify-content: center;
 `;
 
 export default class Board extends React.Component {

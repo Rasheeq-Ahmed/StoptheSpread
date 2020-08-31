@@ -14,7 +14,6 @@ const Container = styled.div`
   width: 220px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
   height: fit-content;
   margin-top: 5em;
@@ -25,6 +24,7 @@ const Title = styled.h3`
   justify-content: space-between;
   align-items: center;
   padding: 8px;
+  height: 2em;
   width: 100%;
   color: white;
 

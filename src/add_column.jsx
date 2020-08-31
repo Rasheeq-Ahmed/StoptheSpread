@@ -34,32 +34,32 @@ const EditContainer = styled.span`
 `;
 
 const ButtonContainer = styled.span`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 8px;
 
-    & > div {
-        cursor: pointer;
-        border: 1px solid grey;
-        border-radius: 2px;
-        padding: 2px 5px 2px 5px;
-    }
+  & > div {
+    cursor: pointer;
+    border: 1px solid grey;
+    border-radius: 2px;
+    padding: 2px 5px 2px 5px;
+  }
 
-    & > div:hover {
-        background-color: #E5E5E5;
-        transition: 0.3s ease;
-    }
+  & > div:hover {
+    background-color: #1d3557;
+    transition: 0.3s ease;
+    color:white;
+  }
 
-    & > span:hover {
-        border: 1px solid grey;
-        border-radius: 2px;
-        background-color: #E5E5E5;
-        transition: 0.3s ease;
-    }
-
-`
+  & > span:hover {
+    border: 1px solid grey;
+    border-radius: 2px;
+    background-color: #1d3557;
+    transition: 0.3s ease;
+  }
+`;
 export const Button = styled.span`
     display: flex;
     flex-direction: column;
@@ -69,6 +69,7 @@ export const Button = styled.span`
     width: 1.5rem;
     height: 1.5rem;
     cursor: pointer;
+    background-color:
 `
 export const Input = styled.input`
     width: 100%;
@@ -136,7 +137,7 @@ export const AddColumn = (props) => {
     );
 
     const toMany = (
-        <Container > 
+        <Container id='toMany'> 
             <AddButton>
                 <Button><FontAwesomeIcon icon="" /> </Button>Max Columns Reached <br/>
             </AddButton>
