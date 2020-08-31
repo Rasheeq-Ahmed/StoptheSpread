@@ -33,19 +33,19 @@ const initialData = {
   columns: {
     "column-1": {
       id: "column-1",
-      title: "To do",
+      title: "Global Pandemic",
       taskIds: ["task-1", "task-2", "task-3", "task-4"],
       priority: "high",
     },
     "column-2": {
       id: "column-2",
-      title: "In progress",
+      title: "Flattening the Curve",
       taskIds: [],
       priority: "high",
     },
     "column-3": {
       id: "column-3",
-      title: "Done",
+      title: "Crisis Averted",
       taskIds: [],
       priority: "high",
     },
