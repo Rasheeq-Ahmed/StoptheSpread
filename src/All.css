@@ -129,6 +129,7 @@ button {
 /* ///////////    Sidebar                  /////////////////// */
 
 .navbar {
+    margin-top: 5em;
     width: 5em;
     height: 100vh;
     position: fixed;
