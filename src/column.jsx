@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import Task from './task'
 import {Droppable, Draggable} from 'react-beautiful-dnd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Button } from './task';
 import { AddTask } from './add_task'
 import "./All.css"
 
@@ -45,7 +44,9 @@ export const EditContainer = styled.div`
    justify-content: space-between;
    align-items: baseline;
    margin-bottom: 8px;
-   width: 80%;
+   width: 90%;
+   height: 10%;
+   margin-top: 1em;
 `;
 
 const DeleteContainer = styled.div`
@@ -67,7 +68,18 @@ const DeleteContainer = styled.div`
 `;
 
 const Input = styled.input`
-    width: 60%;
+    width: 70%;
+    height: 2em;
+`
+const Button = styled.span`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
 `
 
 
@@ -122,7 +134,8 @@ export default class Column extends React.Component {
             <EditContainer editShow={this.state.editShow}>
                  <Input type="text" value={this.state.title} onChange={(e) => this.update(e)}/>
                  <Button onClick={() => { editColTitle(column.id, this.state.title); this.toggle() }}><FontAwesomeIcon icon="pencil-alt" /></Button>
-                 <Button onClick={() => {this.setState({deleteShow: !this.state.deleteShow})}}><FontAwesomeIcon icon="trash" /></Button>
+                 <Button onClick={() => { this.setState({ deleteShow: !this.state.deleteShow }) }}><FontAwesomeIcon icon="trash" /></Button>
+                 <Button onClick={() => {this.toggle()}}><FontAwesomeIcon icon="times" /></Button>
             </EditContainer>
             <DeleteContainer deleteShow={this.state.deleteShow}>
                  <p>Delete Column?</p>
