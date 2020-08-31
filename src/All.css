@@ -7,7 +7,10 @@
 
 a:focus {
     outline: none;
+    /* text-decoration: none;
+    border: none; */
 }
+
 
 button {
     cursor: pointer;
@@ -152,6 +155,7 @@ button {
     transition: width ease 200ms;
     display: flex;
     flex-direction: column;
+    top:0
 }
 
 .navbar-nav {
@@ -249,7 +253,7 @@ svg:hover {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: wheat;
+    /* background-color: wheat; */
     /* justify-content: center; */
     align-items: center;
 }
@@ -286,6 +290,15 @@ svg:hover {
     align-items: center;
     justify-content: space-evenly;
     cursor: pointer;
+    transition: ease 1s;
+
+}
+
+
+.resource-item:hover {
+    background-color: #2396dd71;
+    transition: ease 1s;
+    
 }
 
 .resource-item > svg {
@@ -303,4 +316,9 @@ svg:hover {
 
 .item-title{
     margin: 0;
+}
+
+
+.index-all{
+    position: relative;
 }
