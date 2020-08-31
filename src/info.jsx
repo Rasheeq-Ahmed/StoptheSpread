@@ -36,9 +36,12 @@ export const Info = (props) => {
             <div className="about-all">
                 <div>
                     <header className='header'>
-                    <h1>Dear Mintbeans, 
-                        <br />
-                        we have saved you from this!</h1>
+                        <div>
+                            <h1>Dear Mintbeans, 
+                                <br />
+                                we have saved you from this!</h1>
+                            <span className='get-started-btn'>Get Started</span>
+                        </div>
                     <img 
                         className='kanban-board'
                         src="https://lh5.googleusercontent.com/NxOTs7vImwFMmQnfI_pTg7Es6ZeGPL1AcJaHRrXURM0IaRVi64WFeWschD9paRwJ8MVR4EnQ6P7R8D3mEpHB7PAy648lejPuQ3FrTP3-igSBy23dDhU=w1280" alt=""/>
@@ -63,6 +66,7 @@ export const Info = (props) => {
                                 </h3>
                             </ul>
                         </div>
+
                     </div>
                 </div>
                 <div className="about-body">
