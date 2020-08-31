@@ -5,7 +5,7 @@ import {Droppable, Draggable} from 'react-beautiful-dnd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button } from './task';
 import { AddTask } from './add_task'
-import { TaskModal } from './task_modal'
+import "./All.css"
 
 const Container = styled.div`
   margin: 8px;
@@ -17,6 +17,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  height: fit-content;
 `;
 const Title = styled.h3`
   display: ${(props) => (!props.editShow ? "flex" : "none")};
@@ -28,8 +29,8 @@ const Title = styled.h3`
 const TaskList = styled.div`
   padding: 8px;
   background-color: ${(props) => (props.isDraggingOver ? "skyblue" : "inherit")};
-  flex-grow: 1;
-  min-height: 100px;
+
+  overflow-y: scroll;
 `;
 
 export const EditContainer = styled.div`
@@ -131,6 +132,8 @@ export default class Column extends React.Component {
             >
                 {(provided, snapshot) => (
                     <TaskList
+                    
+                    className='tasklist'
                     ref={provided.innerRef}
                     {...provided.droppableProps}
                     isDraggingOver={snapshot.isDraggingOver}

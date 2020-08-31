@@ -118,6 +118,10 @@ button {
 
     }
 
+    .tasklist::-webkit-scrollbar {
+        display: none;
+    }
+
 
 
 

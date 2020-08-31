@@ -143,7 +143,7 @@ export default class Task extends React.Component {
     };
 
     toggle = (param) => {
-        this.setState({[param]: !this.state[param]})
+        this.setState({[param]: !this.state[param]});
     };
 
     mainToggle = () => {
@@ -187,7 +187,7 @@ export default class Task extends React.Component {
                     </TitleContainer>
                     <EditContainer editShow={this.state.editShow} content={this.state.content}>
                         <Input type="text" value={this.state.content} onChange={(e) => this.update(e, 'content')}/>
-                            <Button onClick={() => { editTask(task.id, "content", this.state.content); this.toggle("editShow") }}><FontAwesomeIcon icon="pencil-alt"/></Button>
+                            <Button onClick={ this.state.content.length ? () => { editTask(task.id, "content", this.state.content); this.toggle("editShow") } : ()=>this.toggle("editShow")}><FontAwesomeIcon icon="pencil-alt"/></Button>
                     </EditContainer>
                     <DetailContainer detailShow={this.state.detailShow}>
                             <span>Details: </span>
@@ -197,7 +197,7 @@ export default class Task extends React.Component {
                     <EditDetail editDetailShow={this.state.editDetailShow}>
                         
                         <Input type="text" value={this.state.detail} onChange={(e) => this.update(e, 'detail')} />
-                            <Button onClick={() => { editTask(task.id, "details", this.state.detail); this.toggle("editDetailShow") }}><FontAwesomeIcon icon="pencil-alt" /></Button>
+                            <Button onClick={this.state.detail !== "" ? () => { editTask(task.id, "details", this.state.detail); this.toggle("editDetailShow") } : ()=> this.toggle("editDetailShow")}><FontAwesomeIcon icon="pencil-alt" /></Button>
                     </EditDetail>
                     <StatusContainer statusShow={this.state.statusShow}>
                             <Button onClick={() => this.toggle("editShow")}><FontAwesomeIcon icon="marker" />Title</Button> 
