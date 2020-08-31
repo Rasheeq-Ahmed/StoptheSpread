@@ -119,7 +119,7 @@ export const AddColumn = (props) => {
 
 
     return (
-        props.colOrder.length < 11 ? show : toMany
+        props.colOrder.length < 6 ? show : toMany
     );
 
 }

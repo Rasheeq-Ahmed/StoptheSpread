@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {Draggable} from 'react-beautiful-dnd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTasks } from '@fortawesome/free-solid-svg-icons';
 
 const Container = styled.div`
     border: 1px solid lightgrey;
@@ -39,7 +40,7 @@ export const EditContainer = styled.div`
    display: flex;
    justify-content: space-between;
    align-items: baseline;
-   width: max-content;
+   max-width: 180px;
 `;
 
 const EditDetail = styled.div`
@@ -128,12 +129,13 @@ export default class Task extends React.Component {
         super(props)
 
         this.state = {
-            content: '',
-            detail: '',
+            content: props.task.content,
+            details: props.task.details,
             editShow: false,
             statusShow: false,
             detailShow: false,
             editDetailShow: false,
+            currentEdit: 'details',
         }
 
     }
@@ -142,21 +144,42 @@ export default class Task extends React.Component {
         this.setState({[param]: e.currentTarget.value});
     };
 
-    toggle = (param) => {
-        this.setState({[param]: !this.state[param]});
+    toggle = (param, task) => {
+        this.setState({[param]: !this.state[param], content: task.content, details: task.details});
     };
 
-    mainToggle = () => {
-        this.toggle("statusShow");
-        this.toggle("detailShow");
+    mainToggle = (task) => {
+        this.toggle("statusShow",task);
+        this.toggle("detailShow",task);
 
         if (this.state.editShow) {
-            this.toggle("editShow")
+            this.toggle("editShow",task)
         };
 
         if (this.state.editDetailShow) {
-            this.toggle("editDetailShow")
+            this.toggle("editDetailShow",task)
         };
+    };
+
+    titleToggle = () => {
+        if(this.state.editDetailShow) {
+            this.setState({editDetailShow: false})
+        };
+
+        this.toggle("editShow");
+    };
+
+    detailToggle = () => {
+        if(this.state.editShow) {
+            this.setState({editShow: false})
+        };
+
+        this.toggle("editDetailShow");
+    };
+
+    clearInput = () => {
+        let input = document.getElementById('input')
+        input.value = ''
     }
 
     render() {
@@ -181,27 +204,31 @@ export default class Task extends React.Component {
                     {/* <Handle {...provided.dragHandleProps}/> */}
                     <TitleContainer>
                         <span>{this.props.task.content}</span>
-                        <span onClick={() => {this.mainToggle()}}>
+                        <span onClick={() => {this.mainToggle(task)}}>
                                 {!this.state.statusShow ? <FontAwesomeIcon icon="chevron-circle-down" /> : <FontAwesomeIcon icon="chevron-circle-up" />}
                         </span>
                     </TitleContainer>
-                    <EditContainer editShow={this.state.editShow} content={this.state.content}>
-                        <Input type="text" value={this.state.content} onChange={(e) => this.update(e, 'content')}/>
-                            <Button onClick={ this.state.content.length ? () => { editTask(task.id, "content", this.state.content); this.toggle("editShow") } : ()=>this.toggle("editShow")}><FontAwesomeIcon icon="pencil-alt"/></Button>
-                    </EditContainer>
                     <DetailContainer detailShow={this.state.detailShow}>
                             <span>Details: </span>
                             <p>{task.details}</p>
                         
                     </DetailContainer>
-                    <EditDetail editDetailShow={this.state.editDetailShow}>
+                    <EditContainer editShow={this.state.editShow} >
+                        <Input id="input" type="text" 
+                                // placeholder={this.state.currentEdit} 
+                                value={this.state.currentEdit === 'details' ? this.state.details : this.state.content}
+                                onChange={(e) => this.update(e, this.state.currentEdit)}/>
+                            <Button onClick={() => { editTask(task.id, this.state.currentEdit, this.state[this.state.currentEdit]); this.toggle("editShow", task) }}><FontAwesomeIcon icon="pencil-alt" /></Button>
+                            <Button onClick={() => this.toggle("editShow", task)}><FontAwesomeIcon icon="times" /></Button>
+                    </EditContainer>
+                    {/* <EditDetail editDetailShow={this.state.editDetailShow}>
                         
-                        <Input type="text" value={this.state.detail} onChange={(e) => this.update(e, 'detail')} />
-                            <Button onClick={this.state.detail !== "" ? () => { editTask(task.id, "details", this.state.detail); this.toggle("editDetailShow") } : ()=> this.toggle("editDetailShow")}><FontAwesomeIcon icon="pencil-alt" /></Button>
-                    </EditDetail>
+                        <Input type="text" placeholder="Change Detail" value={this.state.detail} onChange={(e) => this.update(e, 'detail')} />
+                            <Button onClick={this.state.detail !== "" ? () => { editTask(task.id, "details", this.state.detail); this.toggle("editDetailShow") } : ()=> this.toggle("editDetailShow")}><FontAwesomeIcon icon="pen-fancy" /></Button>
+                    </EditDetail> */}
                     <StatusContainer statusShow={this.state.statusShow}>
-                            <Button onClick={() => this.toggle("editShow")}><FontAwesomeIcon icon="marker" />Title</Button> 
-                            <Button onClick={ () => {this.toggle("editDetailShow")}}><FontAwesomeIcon icon="pen-fancy" />Details</Button>
+                            <Button onClick={this.state.currentEdit !== 'content' ? () => this.setState({currentEdit: 'content', editShow: true}): ()=>this.toggle('editShow', task)}><FontAwesomeIcon icon="marker" />Title</Button> 
+                            <Button onClick={this.state.currentEdit !== 'details' ? () => {this.setState({currentEdit: 'details', editShow: true})} : ()=>this.toggle('editShow', task)}><FontAwesomeIcon icon="pen-fancy" />Details</Button>
                             <Button onClick={()=> removeTask(columnId,task.id)}><FontAwesomeIcon icon="trash" />Delete</Button>
                     </StatusContainer>
                 </Container>
