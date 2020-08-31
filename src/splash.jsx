@@ -48,8 +48,9 @@ const Splash = (props) =>  {
                 </div>
                 <div className="splash-subtext">
                   <p>
-                    {/* Take steps to care for yourself and help protect others in
-                    your home and community. */}
+                    With over 25 million reported cases worldwide 
+                    and over 6 million cases reported in the United States,
+                    Coronavirus(COVID-19) is still an issue that we are facing.
                   </p>
                   <p>
                     Take steps to care for yourself and help protect others in
