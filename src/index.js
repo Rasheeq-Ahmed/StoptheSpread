@@ -22,9 +22,9 @@ class App extends React.Component {
 
     this.state = {
       splash: false,
-      board: false,
+      board: true,
       info: false,
-      resource: true,
+      resource: false,
     }
     this.handleSplash = this.handleSplash.bind(this);
     this.toggle = this.toggle.bind(this);

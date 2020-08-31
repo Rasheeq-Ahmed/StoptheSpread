@@ -5,14 +5,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTasks } from '@fortawesome/free-solid-svg-icons';
 
 const Container = styled.div`
-    border: 1px solid lightgrey;
-    border-radius: 2px;
-    padding: 8px;
-    margin-bottom: 8px;
-    background-color: ${props => (props.isDragDisabled ? 'lightgrey': props.isDragging ? 'lightgreen' : 'white')};
-    display: flex;
-    flex-direction: column;
-    min-width: 200px;
+  border: 1px solid lightgrey;
+  border-radius: 2px;
+  padding: 8px;
+  margin-bottom: 8px;
+  background-color: ${(props) =>
+    props.isDragDisabled
+      ? "lightgrey"
+      : props.isDragging
+      ? "#48cae4"
+      : "white"};
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
 `;
 
 const StatusContainer = styled.div`
@@ -189,12 +194,12 @@ export default class Task extends React.Component {
 
     render() {
         let { editTask, removeTask, task, columnId } = this.props
-        const isDragDisabled = this.props.task.id === 'task-1'
+        // const isDragDisabled = this.props.task.id === 'task-1'
         return (
             <Draggable 
             draggableId={this.props.task.id}
             index={this.props.index}
-            isDragDisabled={this.props.task.id === 'task-1'}
+            // isDragDisabled={this.props.task.id === 'task-1'}
              
              >
                 {(provided, snapshot) => (
@@ -204,7 +209,7 @@ export default class Task extends React.Component {
                 {...provided.dragHandleProps}
                 ref={provided.innerRef}
                 isDragging={snapshot.isDragging}
-                isDragDisabled={isDragDisabled}
+                // isDragDisabled={isDragDisabled}
                 >
                     {/* <Handle {...provided.dragHandleProps}/> */}
                     <TitleContainer>
