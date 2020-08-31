@@ -10,7 +10,7 @@ const Container = styled.div`
   border: 1px solid lightgrey;
   border-radius: 2px;
   width: 220px;
-  background-color: #fdffb6;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: space-around;

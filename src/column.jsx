@@ -12,7 +12,6 @@ const Container = styled.div`
   border: 1px solid lightgrey;
   border-radius: 2px;
   width: 220px;
-  background-color: #fdffb6;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -21,20 +20,23 @@ const Container = styled.div`
   margin-top: 5em;
 `;
 const Title = styled.h3`
+  background-color: #03045e;
   display: ${(props) => (!props.editShow ? "flex" : "none")};
   justify-content: space-between;
   align-items: center;
   padding: 8px;
-  width: 80%;
+  width: 100%;
+  color: white;
 
   & > span:last-child {
-    display: ${(props) => (props.priority !== 'high' ? "flex" : "none")}
+    display: ${(props) => (props.priority !== "high" ? "flex" : "none")}
   }
 `;
 
 const TaskList = styled.div`
   padding: 8px;
-  background-color: ${(props) => (props.isDraggingOver ? "skyblue" : "inherit")};
+  background-color: ${(props) =>
+    props.isDraggingOver ? "#bdb2ff" : "inherit"};
   overflow-y: scroll;
 `;
 
