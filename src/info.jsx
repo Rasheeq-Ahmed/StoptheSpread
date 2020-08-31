@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import './info.css';
+import './All.css'
 import { cleanup } from '@testing-library/react';
 const Container = styled.div`
     width: 100%;
