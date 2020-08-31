@@ -16,7 +16,7 @@ export const Info = (props) => {
     const [current, setCurrent] = useState(1)
 
     useEffect( () => {
-        let interval = setInterval(scroll, 5000)
+        let interval = setInterval(scroll, 8000)
 
         return function cleanup() {
             clearInterval(interval)
@@ -45,7 +45,9 @@ export const Info = (props) => {
                     </header>
                     <div className='info-body'>
                         <div className='info-body-left'>
-                            <img className='kanban-board' src={"./kanban.gif"} alt=""/>
+                            <img id={current === 1 ? '' : 'hide'} className='kanban-pics' src={"./kanban1.png"} alt=""/>
+                            <img id={current === 2 ? '' : 'hide'} className='kanban-pics' src={"./kanban3.png"} alt="" />
+                            <img id={current === 3 ? '' : 'hide'} className='kanban-pics' src={"./kanban2.png"} alt="" />
                         </div>
 
                         <div className='info-body-left'>
@@ -65,7 +67,7 @@ export const Info = (props) => {
                 </div>
                 <div className="about-body">
                     <div className="about-people-all">
-                        <h1 id='team'>Team</h1>
+                        <h1 id='team'>Created by</h1>
                         <div className="about-team-members">
 
                             <div className="person">
@@ -104,11 +106,18 @@ export const Info = (props) => {
                     <div className="about-proj">
                         <div className="about-proj-tech">
                             <div className="tech-title">
-                                <h1>Javascript Olympics</h1>
+                                <h3>Javascript Bootcamp Olympics</h3>
                             </div>
                             <div className="tech-icons">
                                 <ul>
-
+                                    <a href="https://www.mintbean.io/" target="_blank">
+                                        <li><img id='mongo-icon' src="https://www.mintbean.io/img/bean.6bcf6ea5.png" alt="" /></li>
+                                    </a>
+                                    <a href="https://featurepeek.com/" target="_blank">
+                                        <li ><img id='express-icon' src="https://docs.featurepeek.com/img/logo-sprite.png" alt="" /></li>
+                                    </a>
+                                    {/* <li><img src="https://www.mintbean.io/img/mintbean-logo.1474c6b6.png" alt="" /></li> */}
+                                    {/* <li><img src="https://i.imgur.com/aRRChFH.png" alt="" /></li> */}
                                 </ul>
                             </div>
 
