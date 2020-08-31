@@ -225,7 +225,7 @@ export default class Task extends React.Component {
                     </DetailContainer>
                     <EditContainer editShow={this.state.editShow} >
                         <Input id="input" type="text" 
-                                // placeholder={this.state.currentEdit} 
+                                placeholder={`Change ${this.state.currentEdit}`} 
                                 value={this.state.currentEdit === 'details' ? this.state.details : this.state.content}
                                 onChange={(e) => this.update(e, this.state.currentEdit)}/>
                             <Button onClick={() => { editTask(task.id, this.state.currentEdit, this.state[this.state.currentEdit]); this.toggle("editShow", task) }}><FontAwesomeIcon icon="pencil-alt" /></Button>
