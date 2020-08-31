@@ -108,6 +108,10 @@ export const TitleContainer = styled.div`
    & > span {
        font-weight: bold;
    }
+
+   & > span:last-child {
+       cursor: pointer;
+   }
 `;
 
 
