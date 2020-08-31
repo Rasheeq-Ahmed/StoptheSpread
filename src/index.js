@@ -7,6 +7,7 @@ import Splash from './splash';
 import Board from './board';
 import Sidebar from './sidebar'
 import {Resources} from './resources'
+import { Info } from './info'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -22,7 +23,7 @@ class App extends React.Component {
     this.state = {
       splash: false,
       board: false,
-      info: false,
+      info: true,
       resource: false,
     }
     this.handleSplash = this.handleSplash.bind(this);
@@ -39,7 +40,8 @@ class App extends React.Component {
   toggle(e, param) {
     e.preventDefault();
 
-    this.setState({[param]: !this.state[param]})
+
+    this.setState({[param]: true })
 
     let state = {
       board: true,
@@ -69,6 +71,7 @@ class App extends React.Component {
             <h1>Stop The Spread</h1>
           </div>
           <Sidebar toggle={this.toggle}/>
+          <Info info={this.state.info}/>
           <Board board={this.state.board}/>
           <Resources resource={this.state.resource}/> 
           </div> )}
