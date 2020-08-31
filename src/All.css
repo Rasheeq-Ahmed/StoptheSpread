@@ -5,6 +5,10 @@
 
 }
 
+a:focus {
+    outline: none;
+}
+
 button {
     cursor: pointer;
 }
@@ -232,7 +236,7 @@ svg:hover {
 
 
 #toMany {
-    background-color: #1d3557;
+    background-color: #e63946;
     color: white;
 
 }

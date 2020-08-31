@@ -10,6 +10,7 @@ const Container = styled.div`
   margin-left: 5em;
   background-color: #caf0f8;
   justify-content: center;
+  height: 100vh;
 `;
 
 export default class Board extends React.Component {
