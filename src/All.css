@@ -5,6 +5,10 @@
 
 }
 
+a:focus {
+    outline: none;
+}
+
 button {
     cursor: pointer;
 }
