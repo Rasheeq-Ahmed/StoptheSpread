@@ -1,9 +1,33 @@
 const initialData = {
   tasks: {
-    "task-1": { id: "task-1", content: "Wear a mask in public", details: "By 5pm Monday", priority: 'high' },
-    "task-2": { id: "task-2", content: "Order Takeout", details: "Friends", priority: 'low' },
-    "task-3": { id: "task-3", content: "Charge my phone", details: "" },
-    "task-4": { id: "task-4", content: "Cook dinner", details: "" },
+    "task-1": {
+      id: "task-1",
+      content: "Wear A Mask In Public",
+      details:
+        "Everyone should wear a mask in public settings and when around people who don’t live in your household.",
+      priority: "high",
+    },
+    "task-2": {
+      id: "task-2",
+      content: "Order Takeout",
+      details:
+        "Feeling like eating out? Place an order for takeout instead and remember to socially distance.",
+      priority: "high",
+    },
+    "task-3": {
+      id: "task-3",
+      content: "Monitor Symptoms",
+      details:
+        "Be alert for symptoms. Watch for fever, cough, shortness of breath, or other symptoms of COVID-19.",
+      priority: "high",
+    },
+    "task-4": {
+      id: "task-4",
+      content: "Washing Your Hands Often",
+      details:
+        "Wash your hands often with soap and water for at least 20 seconds especially after you have been in a public place",
+      priority: "high",
+    },
   },
 
   columns: {
@@ -11,24 +35,24 @@ const initialData = {
       id: "column-1",
       title: "To do",
       taskIds: ["task-1", "task-2", "task-3", "task-4"],
-      priority: 'high'
+      priority: "high",
     },
     "column-2": {
       id: "column-2",
       title: "In progress",
       taskIds: [],
-      priority: 'high'
+      priority: "high",
     },
     "column-3": {
       id: "column-3",
       title: "Done",
       taskIds: [],
-      priority: 'high'
-      },
+      priority: "high",
     },
-  columnOrder: ["column-1", "column-2","column-3",],
+  },
+  columnOrder: ["column-1", "column-2", "column-3"],
 
-  splash: false
+  splash: false,
 };
 
 export default initialData;
