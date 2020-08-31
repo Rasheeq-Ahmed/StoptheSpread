@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import './info.css';
+import './All.css'
 import { cleanup } from '@testing-library/react';
 const Container = styled.div`
     width: 100%;
@@ -40,10 +41,11 @@ export const Info = (props) => {
                             <h1>Dear Mintbeans, 
                                 <br />
                                 we have saved you from this!</h1>
+                            {/* <span className='get-started-btn'>Get Started</span> */}
                         </div>
                     <img 
                         className='kanban-board'
-                        src="https://lh5.googleusercontent.com/NxOTs7vImwFMmQnfI_pTg7Es6ZeGPL1AcJaHRrXURM0IaRVi64WFeWschD9paRwJ8MVR4EnQ6P7R8D3mEpHB7PAy648lejPuQ3FrTP3-igSBy23dDhU=w1280" alt=""/>
+                            src='https://i.imgur.com/PX5Kw2b.jpg' alt=""/>
                     </header>
                     <div className='info-body'>
                         

@@ -22,7 +22,7 @@ export const Resources = (props) => {
             </div>
 
             <div className="resource-body">
-                    {/* <a href="https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/index.html" className="resource-link"> */}
+                    <a href="https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/index.html" className="resource-link" target="_blank">
                     <div className="resource-item">
 
                         <svg height="512" viewBox="0 0 64 64" width="512" xmlns="http://www.w3.org/2000/svg"><g id="soap-hygiene-handwash-covid19-coronavirus"><path d="m46 61h-28l-2.461-24.607a14 14 0 0 1 13.931-15.393h5.06a14 14 0 0 1 13.931 15.393z" fill="#9bc9ff" /><path d="m47.934 31h-31.868a13.919 13.919 0 0 0 -.527 5.393l1.161 11.607h30.6l1.161-11.607a13.919 13.919 0 0 0 -.527-5.393z" fill="#ff5023" /><path d="m34.53 21h-2a14 14 0 0 1 13.931 15.393l-1.461 24.607h1l2.461-24.607a14 14 0 0 0 -13.931-15.393z" fill="#57a4ff" /><path d="m61 29v32h-16v-32a2 2 0 0 1 1.62-1.96 1.581 1.581 0 0 1 .38-.04h12a2.006 2.006 0 0 1 2 2z" fill="#2488ff" /><path d="m59 27h-2a2.006 2.006 0 0 1 2 2v32h2v-32a2.006 2.006 0 0 0 -2-2z" fill="#006df0" /><circle cx="15" cy="19" fill="#2488ff" r="3" /><path d="m30 17h4v4h-4z" fill="#006df0" /><path d="m30 21v-4h-2a2 2 0 0 0 -2 2v2.45a13.994 13.994 0 0 1 3.47-.45z" fill="#005ece" /><path d="m38 21.45v-2.45a2 2 0 0 0 -2-2h-2v4h.53a13.994 13.994 0 0 1 3.47.45z" fill="#2488ff" /><path d="m53 27h4v-3a1 1 0 0 0 -1-1h-3z" fill="#ee8700" /><path d="m53 23h-3a1 1 0 0 0 -1 1v3h4z" fill="#ff9811" /><path d="m55 23v-8h-4v1 3 4h2z" fill="#006df0" /><path d="m48 16h3v3h-3z" fill="#005ece" /><path d="m45 35h16v18h-16z" fill="#ffcd00" /><path d="m59 35h2v18h-2z" fill="#ebbf00" /><path d="m35 17v-8h-6v8h1 4z" fill="#9bc9ff" /><path d="m37 7a2 2 0 0 0 -2-2h-20a4 4 0 0 0 4 4h16a2 2 0 0 0 2-2z" fill="#006df0" /><circle cx="6" cy="28" fill="#2488ff" r="2" /><circle cx="11" cy="11" fill="#9bc9ff" r="2" /><circle cx="5" cy="17" fill="#57a4ff" r="2" /><circle cx="12" cy="21" fill="#57a4ff" r="2" /><path d="m51 49h4v-3h3v-4h-3v-3h-4v3h-3v4h3z" fill="#ed1c24" /><path d="m36 42a4 4 0 0 1 -8 0c0-2.209 4-7 4-7s4 4.791 4 7z" fill="#f1f2f2" /><path d="m31 43h-24a4 4 0 0 0 -4 4v10a4 4 0 0 0 4 4h24a4 4 0 0 0 4-4v-10a4 4 0 0 0 -4-4z" fill="#ffa733" /><path d="m31.707 43.071a3.979 3.979 0 0 1 1.293 2.929v10a4 4 0 0 1 -4 4h-24a4.015 4.015 0 0 1 -.707-.071 3.975 3.975 0 0 0 2.707 1.071h24a4 4 0 0 0 4-4v-10a3.994 3.994 0 0 0 -3.293-3.929z" fill="#ff9811" /><path d="m23 46h-14a3 3 0 0 0 -3 3v6a1 1 0 0 0 2 0v-6a1 1 0 0 1 1-1h14a1 1 0 0 0 0-2z" fill="#ee8700" /></g></svg>
@@ -30,8 +30,8 @@ export const Resources = (props) => {
                         Prevention
                     </h2>
                     </div>
-                    {/* </a> */}
-                    <a href="https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/index.html" className="resource-link">
+                    </a>
+                    <a href="https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/index.html" className="resource-link" target="_blank">
 
 
                 <div className="resource-item">
@@ -40,7 +40,7 @@ export const Resources = (props) => {
                     <h2 className='item-title'>Symptoms</h2>
                 </div>
                     </a>
-                    <a href="https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/index.html" className="resource-link">
+                    <a href="https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/index.html" className="resource-link" target="_blank">
 
 
                 <div className="resource-item">

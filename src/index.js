@@ -21,10 +21,10 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      splash: false,
+      splash: true,
       board: false,
-      info: false,
-      resource: true,
+      info: true,
+      resource: false,
     }
     this.handleSplash = this.handleSplash.bind(this);
     this.toggle = this.toggle.bind(this);
@@ -61,7 +61,7 @@ class App extends React.Component {
   render() {
     const splash = this.state.splash
     return (
-      <div>
+      <div className='index-all'>
         {splash ? (
           <Splash handleSplash={this.handleSplash} />
 
