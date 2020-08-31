@@ -1,7 +1,6 @@
 import React, {useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Button } from './task';
 
 const Container = styled.div`
   margin: 8px;
@@ -35,13 +34,38 @@ const ButtonContainer = styled.span`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    cursor: pointer;
     width: 100%;
     margin-top: 8px;
 
-    & > button {
+    & > div {
         cursor: pointer;
-    };
+        border: 1px solid grey;
+        border-radius: 2px;
+        padding: 2px 5px 2px 5px;
+    }
+
+    & > div:hover {
+        background-color: #E5E5E5;
+        transition: 0.3s ease;
+    }
+
+    & > span:hover {
+        border: 1px solid grey;
+        border-radius: 2px;
+        background-color: #E5E5E5;
+        transition: 0.3s ease;
+    }
+
+`
+export const Button = styled.span`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
 `
 export const Input = styled.input`
     width: 100%;
@@ -101,8 +125,8 @@ export const AddColumn = (props) => {
             <Input placeholder='Enter a title' ref={input} onChange={(e) => setTitle(e.currentTarget.value)}></Input>
 
             <ButtonContainer>
-                <button onClick={title.length ? () => { props.addCol(title); reset(); } : () => setAdd(!add)}>Add Column</button>
-                <button onClick={() => reset()}><FontAwesomeIcon icon="times" /></button>
+                <div onClick={title.length ? () => { props.addCol(title); reset(); } : () => setAdd(!add)}>Add Column</div>
+                <Button onClick={() => reset()}><FontAwesomeIcon icon="times" /></Button>
             </ButtonContainer>
         </EditContainer>
     </Container>
@@ -119,7 +143,7 @@ export const AddColumn = (props) => {
 
 
     return (
-        props.colOrder.length < 11 ? show : toMany
+        props.colOrder.length < 6 ? show : toMany
     );
 
 }
