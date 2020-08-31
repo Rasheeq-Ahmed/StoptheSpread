@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import './info.css';
-
+import { cleanup } from '@testing-library/react';
 const Container = styled.div`
     width: 100%;
     height: 100%;
@@ -13,31 +13,53 @@ const Container = styled.div`
 
 export const Info = (props) => {
 
+    const [current, setCurrent] = useState(1)
+
+    useEffect( () => {
+        let interval = setInterval(scroll, 5000)
+
+        return function cleanup() {
+            clearInterval(interval)
+        }
+    })
+
+    const scroll = () => {
+        if (current === 3) {
+            setCurrent(1)
+        } else {
+            setCurrent(current + 1)
+        }
+    };
+
     return (
         <Container info={props.info}>
             <div className="about-all">
                 <div>
-                    <h1>Dear Mintbeans, we have saved you from this!</h1>
+                    <header className='header'>
+                    <h1>Dear Mintbeans, 
+                        <br />
+                        we have saved you from this!</h1>
                     <img 
                         className='kanban-board'
                         src="https://lh5.googleusercontent.com/NxOTs7vImwFMmQnfI_pTg7Es6ZeGPL1AcJaHRrXURM0IaRVi64WFeWschD9paRwJ8MVR4EnQ6P7R8D3mEpHB7PAy648lejPuQ3FrTP3-igSBy23dDhU=w1280" alt=""/>
+                    </header>
                     <div className='info-body'>
                         <div className='info-body-left'>
-                            <ul> 
-                                <li>
-                                    We have some preset tasks that will keep you safe!
-                                </li>
-                                <li>
-                                    Check out more resources on the Resources tab.
-                                </li>
-                                <li>
-                                    Enjoy the kanban board and save some post its!
-                                </li>
-                            </ul>
+                            <img className='kanban-board' src={"./kanban.gif"} alt=""/>
                         </div>
 
                         <div className='info-body-left'>
-
+                            <ul> 
+                                <h3 id={current === 1 ? 'selected' : ''}>
+                                    We have some preset tasks that will keep you safe!
+                                </h3>
+                                <h3 id={current === 2 ? 'selected' : ''}>
+                                    Check out more resources on the Resources tab.
+                                </h3>
+                                <h3 id={current === 3 ? 'selected' : ''}>
+                                    Enjoy the kanban board and save some post its!
+                                </h3>
+                            </ul>
                         </div>
                     </div>
                 </div>

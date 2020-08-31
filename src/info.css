@@ -37,9 +37,27 @@ align-items: center;
 
 }
 
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .kanban-board {
     width: 30em;
     height: 20em;
+    margin: 2em;
+    border-radius: 2px;
+}
+
+.info-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#selected {
+    font-weight: bold;
 }
 
 #team {
