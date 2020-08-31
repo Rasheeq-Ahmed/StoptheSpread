@@ -66,7 +66,11 @@ export class Sidebar extends React.Component {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a href="#" className="nav-link">
+                  <a
+                    href="https://github.com/Rasheeq-Ahmed/StoptheSpread"
+                    target="_blank"
+                    className="nav-link"
+                  >
                     <svg viewBox="0 0 128 128">
                       <path
                         fill-rule="evenodd"
