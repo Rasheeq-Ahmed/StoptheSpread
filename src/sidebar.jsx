@@ -15,7 +15,7 @@ export class Sidebar extends React.Component {
                 >
                   <a href="#" className="nav-link">
                     <svg
-                      fill={this.props.info ? "white" : "#00000"}
+                      fill={this.props.info ? "#e63946" : "#00000"}
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 26 26"
                     >
@@ -33,7 +33,7 @@ export class Sidebar extends React.Component {
                       id="Capa_1"
                       viewBox="0 0 512 512"
                       xmlns="http://www.w3.org/2000/svg"
-                      fill={this.props.board ? "white" : "#00000"}
+                      fill={this.props.board ? "#e63946" : "#00000"}
                     >
                       <g>
                         <path d="m467 61c-24.814 0-45 20.186-45 45v15h90v-15c0-24.814-20.186-45-45-45z" />
@@ -55,7 +55,7 @@ export class Sidebar extends React.Component {
                     <svg
                       viewBox="0 0 512.039 512.039"
                       xmlns="http://www.w3.org/2000/svg"
-                      fill={this.props.resource ? "white" : "#000000"}
+                      fill={this.props.resource ? "#e63946" : "#00000"}
                     >
                       <g>
                         <path d="m255.874 67.497c-111.609-97.618-253.518-11.848-255.845 104.427-.593 29.633 7.961 58.498 24.988 85.109h110.364l19.63-32.718c5.7-9.499 19.494-9.805 25.517-.335l41.417 65.083 60.373-127.451c5.265-11.121 20.956-11.474 26.763-.69l51.752 96.111h125.898c93.262-145.76-91.055-311.811-230.857-189.536z" />

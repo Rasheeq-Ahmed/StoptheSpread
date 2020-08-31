@@ -146,6 +146,8 @@ button {
     position: fixed;
     background-color: #2396dd;
     transition: width ease 200ms;
+    display: flex;
+    flex-direction: column;
 }
 
 .navbar-nav {
@@ -156,13 +158,15 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: center; */
+    justify-content: center;
 }
 
 .nav-item {
     width: 100%;
     /* background-color: whitesmoke ; */
     transition: ease 0.5s;
+    outline: none;
+    border: none;
 
 
 }
@@ -172,12 +176,17 @@ button {
     transition: ease 0.5s;
     fill: white;
     text-decoration: none;
+        outline: none;
+
 
 
 
 }
 
 .nav-link {
+    border-style: none;
+        outline: none;
+    border: none;
     display: flex;
     align-items: center;
     height: 5em;
@@ -192,16 +201,20 @@ button {
     margin-left: 1em;
     text-decoration: none;
     color: white;
+        outline: none;
+
 
 }
 
 .nav-link > svg {
     min-width: 2.5em;
-    margin: 0 1.5em
+    margin: 0 1em;
+    outline: none;
+    border: none;
 }
 
 svg:hover {
-   fill: white;
+   fill: #e63946;
 }
 
 .navbar:hover {
