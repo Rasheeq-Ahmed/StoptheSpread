@@ -56,7 +56,7 @@ button {
 }
 .splash-left {
     width: 60%;
-    height: 70%;
+    height: 80%;
     background-color: #457b9d;
     background-image: url('https://i.imgur.com/LEdYIrm.png?1');
     /* background-color: aqua; */
@@ -70,7 +70,7 @@ button {
 .splash-right{
     background-color: #caf0f8;
     width: 40%;
-    height: 70%;
+    height: 80%;
     display: flex;
     justify-content: space-between;
     align-items: center;
