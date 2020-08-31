@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import Column from './column';
 import {AddColumn} from './add_column';
 import Splash from './splash'
-
+import Sidebar from './sidebar'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -278,7 +278,8 @@ class App extends React.Component {
     return (
       <div>
         {splash ? (
-          <Splash handleSplash={this.handleSplash} />
+          // <Splash handleSplash={this.handleSplash} />
+          <Sidebar/>
         ) : (
           <DragDropContext
             onDragStart={this.onDragStart}
