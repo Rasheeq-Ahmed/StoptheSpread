@@ -5,6 +5,7 @@ import {Droppable, Draggable} from 'react-beautiful-dnd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button } from './task';
 import { AddTask } from './add_task'
+import { TaskModal } from './task_modal'
 
 const Container = styled.div`
   margin: 8px;
@@ -41,9 +42,16 @@ export const EditContainer = styled.div`
 
 const DeleteContainer = styled.div`
    display: ${(props) => (props.deleteShow ? "flex" : "none")};
-   justify-content: space-around;
-   align-items: baseline;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
    width: 80%;
+
+   & > div {
+     display: flex;
+     justify-content: space-between;
+     width: 50%;
+   };
 
    & > button {
         cursor: pointer;
@@ -63,6 +71,8 @@ export default class Column extends React.Component {
         title: this.props.column.title,
         editShow: false,
         deleteShow: false,
+        taskModalShow: false,
+        currentTask: null
       }
     }
 
@@ -73,6 +83,16 @@ export default class Column extends React.Component {
     toggle = () => {
       this.setState({ editShow: !this.state.editShow })
     }
+
+    toggleTaskModal = (taskId = null) => {
+
+      if (taskId) {
+        this.setState({taskModalShow: true, currentTask: taskId})
+      } else {
+        this.setState({taskModalShow: false, currentTask: null})
+      }
+    };
+
     
 
     render() {
@@ -97,8 +117,10 @@ export default class Column extends React.Component {
             </EditContainer>
             <DeleteContainer deleteShow={this.state.deleteShow}>
                  <p>Delete Column?</p>
-                 <button onClick={() => removeCol(column.id)}>Yes</button>
-                 <button onClick={() => { this.setState({ deleteShow: !this.state.deleteShow })}}>No</button>
+                 <div>
+                  <button onClick={() => removeCol(column.id)}>Yes</button>
+                  <button onClick={() => { this.setState({ deleteShow: !this.state.deleteShow })}}>No</button>
+                 </div>
             </DeleteContainer>
 
             <Droppable 
@@ -114,15 +136,24 @@ export default class Column extends React.Component {
                     isDraggingOver={snapshot.isDraggingOver}
                     >
                 {this.props.tasks.map((task, index) => (
-                
-                  <Task 
-                    key={task.id} 
-                    task={task} 
-                    index={index}
-                    columnId={column.id}
-                    removeTask={removeTask}
-                    editTask={editTask}
-                  />))}
+                  <div key={task.id}>
+                    <Task 
+                      task={task} 
+                      index={index}
+                      columnId={column.id}
+                      removeTask={removeTask}
+                      editTask={editTask}
+                      toggle={this.toggleTaskModal.bind(this)}
+                      /> 
+
+                    {/* <TaskModal toggle={this.toggleTaskModal.bind(this)}
+                               task={task}
+                               show={this.state.taskModalShow}
+                               current={this.state.currentTask}
+
+                    /> */}
+                  </div>
+                    ))}
                 {provided.placeholder}
                 </TaskList>
                 )}

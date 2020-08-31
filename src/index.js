@@ -317,7 +317,7 @@ class App extends React.Component {
                 </Container>
               )}
             </Droppable>
-            <AddColumn addCol={this.addCol.bind(this)}/>
+            <AddColumn addCol={this.addCol.bind(this)} colOrder={this.state.columnOrder}/>
             {/* <button onClick={() => this.addCol("Hackathon")}>Add Column</button> */}
             {/* <button onClick={()=> this.editTask("task-1", 'Win Hackathon')}>Edit Task</button> */}
           </DragDropContext>
