@@ -5,7 +5,7 @@ import { Button } from './task';
 
 const Container = styled.div`
     border: 1px solid lightgrey;
-    width: 180px;
+    width: 200px;
     border-radius: 2px;
     padding: 8px;
     margin-bottom: 8px;
@@ -16,7 +16,7 @@ const Container = styled.div`
     }  
 `;
 
-const AddButton = styled.p`
+const AddButton = styled.span`
     display: ${(props) => (!props.add ? "flex" : "none")};
     align-items: center;
     cursor: pointer;
