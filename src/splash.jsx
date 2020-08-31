@@ -1,19 +1,45 @@
 import React from 'react';
+import {useSpring,useTransition, animated} from 'react-spring'
 import './All.css'
 
-export default class Splash extends React.Component {
-    constructor(props) {
-        super(props)
-    }
+
+const Splash = (props) =>  {
+        
+        // const fade = useSpring({
+        //     config: {
+        //         // delay: 5000,
+        //         // duration: 1000
+        //     },
+        //     from: {
+        //         opacity: 0
+        //     },
+        //     to: {
+        //         opacity: 1
+        //     },
+        // })
+        const fade2 = useSpring({
+            config: {
+                // delay: 5000,
+                duration: 2000
+            },
+            from: {
+                opacity: 0
+            },
+            to: {
+                opacity: 1
+            },
+        })
+
+        
+
     
-    render() {
 
         return (
-          <div className="splash-back">
-            <div className="splash-title">
+          <animated.div className="splash-back">
+            <animated.div className="splash-title" >
               <h1>Stop The Spread</h1>
-            </div>
-            <div className="splash-body">
+            </animated.div>
+            <animated.div className="splash-body" style={fade2}>
               <div className="splash-left"></div>
               <div className="splash-right">
                 <div className="splash-img"></div>
@@ -31,13 +57,15 @@ export default class Splash extends React.Component {
                   </p>
                 </div>
                 <div className="splash-button">
-                  <button onClick={this.props.handleSplash}>Learn More</button>
+                  <button onClick={props.handleSplash}>Learn More</button>
                 </div>
               </div>
-            </div>
-          </div>
+            </animated.div>
+          </animated.div>
         );
-    }
+    
 }
 
+
+export default Splash
 
