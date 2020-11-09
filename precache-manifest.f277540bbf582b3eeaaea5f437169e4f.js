@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "655e7b22c5a98e180b2ed49a382f4156",
+    "revision": "43c3b88b2dabc0c365743f29ac2488e6",
     "url": "/StoptheSpread/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/StoptheSpread/static/css/2.3107b260.chunk.css"
   },
   {
-    "revision": "ee193a45aee8b8a955fa",
-    "url": "/StoptheSpread/static/css/main.a4ff5b73.chunk.css"
+    "revision": "b6e9e266ff261b5d5b63",
+    "url": "/StoptheSpread/static/css/main.530e3cd1.chunk.css"
   },
   {
     "revision": "76917956cf0d63e7d4ab",
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/StoptheSpread/static/js/2.02ce7d8b.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "ee193a45aee8b8a955fa",
-    "url": "/StoptheSpread/static/js/main.b992960a.chunk.js"
+    "revision": "b6e9e266ff261b5d5b63",
+    "url": "/StoptheSpread/static/js/main.865e50cb.chunk.js"
   },
   {
     "revision": "f7a864c95a36ef8d7fa0",
