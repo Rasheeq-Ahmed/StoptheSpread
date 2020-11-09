@@ -21,7 +21,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      splash: true,
+      splash: false,
       board: false,
       info: true,
       resource: false,
@@ -66,11 +66,11 @@ class App extends React.Component {
           <Splash handleSplash={this.handleSplash} />
 
         ) : (
-        <div>
-          <div className='splash-title'>
+        <div className='index-all'>
+          <Sidebar toggle={this.toggle} info={this.state.info} board={this.state.board} resource={this.state.resource}/>
+          <div className='page-title'>
             <h1>Stop The Spread</h1>
           </div>
-          <Sidebar toggle={this.toggle} info={this.state.info} board={this.state.board} resource={this.state.resource}/>
           <Info info={this.state.info}/>
           <Board board={this.state.board}/>
           <Resources resource={this.state.resource}/> 

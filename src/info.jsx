@@ -5,7 +5,7 @@ import './All.css'
 import { cleanup } from '@testing-library/react';
 const Container = styled.div`
     width: 100%;
-    height: 100%;
+    height: 90vh;
     display: ${(props) => (props.info ? 'flex' : 'none')};
     justify-content: center;
     align-items: center;
@@ -35,53 +35,66 @@ export const Info = (props) => {
     return (
         <Container info={props.info}>
             <div className="about-all">
-                <div>
-                    <header className='header'>
-                        <div>
-                            <h1>Dear Mintbeans, 
-                                <br />
-                                we have saved you from this!</h1>
-                            {/* <span className='get-started-btn'>Get Started</span> */}
-                        </div>
-                    <img 
-                        className='kanban-board'
-                            src='https://i.imgur.com/PX5Kw2b.jpg' alt=""/>
-                    </header>
-                    <div className='info-body'>
-                        
-                            <img id={current === 1 ? '' : 'hide'} className='kanban-pics' src={"./kanban1.png"} alt=""/>
-                            <img id={current === 2 ? '' : 'hide'} className='kanban-pics' src={"./kanban3.png"} alt="" />
-                            <img id={current === 3 ? '' : 'hide'} className='kanban-pics' src={"./kanban2.png"} alt="" />
-                        
-
-                        <div className='info-body-left'>
-                            <ul> 
-                                <h3 id={current === 1 ? 'selected' : ''}>
-                                    We have some preset tasks that will keep you safe!
-                                </h3>
-                                <h3 id={current === 2 ? 'selected' : ''}>
-                                    Check out more resources on the Resources tab.
-                                </h3>
-                                <h3 id={current === 3 ? 'selected' : ''}>
-                                    Enjoy the kanban board and save some post its!
-                                </h3>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className='info-body'>
-                        <div className='covid-body-left'>
-                            <ul>
-                                <h3>Wear a mask</h3>
-                                <h3>Wash your hands</h3>
-                                <h3>Keep a safe distance</h3>
-                                <h2>Continue Hacking</h2>
-                            </ul>
-                        </div>
-                        <div className='covid-body-right'>
-                            <img className ='kanban-board'src="https://www.npr.org/assets/img/2020/04/10/covid_asymptomic_NPR_10Apr.gif" alt=""/>
-                        </div>
+                
+                <div className="about-1">
+                    <img src="https://blog.capterra.com/wp-content/uploads/2019/10/HEAD-Top_9_Medical_Apps_for_Doctors_Hero_no_text.png" alt=""/>
+                    <div className="objective">
+                        <h1 className="">Objective</h1>
+                        <p>Stop The Spread is a kanban board project that was completed for Mintbean's Javascript Olympics Hackathon. This project was built with a mission of providing resource and information for Covid-19.</p>
+    
                     </div>
                 </div>
+                <div className="about-2">
+                    <div className="duration">
+                        <h2>Duration</h2>
+                        <img src="https://i.imgur.com/Nc2p740.png" alt=""/>
+                        <p>48hrs</p>
+
+                    </div>
+                    <div className="prize">
+                        <h2>Mintbean Hackathon</h2>
+                        <img src="https://i.imgur.com/Rhi2W9b.png" alt=""/>
+                        <p>Honorable Mention</p>
+                    </div>
+                    <div className="tech">
+                        <h2>Technology</h2>
+                        <img src="https://i.imgur.com/xQhefcL.png" alt=""/>
+                        <p>Javascript</p>
+
+                    </div>
+                  
+                </div>
+{/*                 
+                <div className="about-3">
+                <h1>Created by</h1>
+                <div className="about-2">
+                    <div className="duration">
+                        <img src="https://i.imgur.com/Nc2p740.png" alt=""/>
+                        <h2>Rasheeq Ahmed</h2>
+                        <p>48hrs</p>
+
+                    </div>
+                    <div className="prize">
+                        <h2>Mintbean Hackathon</h2>
+                        <img src="https://i.imgur.com/Rhi2W9b.png" alt=""/>
+                        <p>Honorable Mention</p>
+                    </div>
+                    <div className="tech">
+                        <h2>Technology</h2>
+                        <img src="https://i.imgur.com/xQhefcL.png" alt=""/>
+                        <p>Javascript</p>
+
+                    </div>
+                  
+                </div>
+
+                </div> */}
+
+
+
+
+
+
                 <div className="about-body">
                     <div className="about-people-all">
                         <h1 id='team'>Created by</h1>
@@ -89,9 +102,9 @@ export const Info = (props) => {
 
                             <div className="person">
                                 <div className="person-pic">
-                                    <img src="https://media-exp1.licdn.com/dms/image/C4E03AQE2m-9v0zZZ7g/profile-displayphoto-shrink_400_400/0?e=1604534400&v=beta&t=rdFDe2NOgVHgx4yD18x6fyufE2WJFzbAgazbTj7ReRM" alt="" />
+                                    <img src="https://i.imgur.com/9TC4MxW.jpg" alt="" />
                                 </div>
-                                <div className="person-name">Rasheeq Ahmed</div>
+                                <h4 className="person-name">Rasheeq Ahmed</h4>
                                 <div className="person-links">
                                     <a href="https://www.linkedin.com/in/rasheeq-ahmed-53b7aa91/" target="_blank">
                                         <img id="linked-icon" src="https://i.imgur.com/Xm1qtqN.png" />
@@ -104,12 +117,12 @@ export const Info = (props) => {
                             </div>
                             <div className="person">
                                 <div className="person-pic">
-                                    <img src="https://media-exp1.licdn.com/dms/image/C4E03AQHpVC12czSFEQ/profile-displayphoto-shrink_400_400/0?e=1604534400&v=beta&t=LZCCOIV9PXZBlznYV1igk5oSjbYodkH4QWiyvpBygoM" alt="" />
+                                    <img src="https://i.imgur.com/vK31w0L.jpg" alt="" />
                                 </div>
-                                <div className="person-name">Eric Chen</div>
+                                <h4 className="person-name">Eric Chen</h4>
 
                                 <div className="person-links">
-                                    <a href="https://www.linkedin.com/in/eric-chen-782b951a9/" target="_blank">
+                                    <a href="https://i.imgur.com/vK31w0L.jpg" target="_blank">
                                         <img id="linked-icon" src="https://i.imgur.com/Xm1qtqN.png" />
                                     </a>
                                     <a href="https://github.com/echen831" target="_blank">
@@ -120,7 +133,7 @@ export const Info = (props) => {
 
                         </div>
                     </div>
-                    <div className="about-proj">
+                    {/* <div className="about-proj">
                         <div className="about-proj-tech">
                             <div className="tech-title">
                                 <h3>Javascript Bootcamp Olympics</h3>
@@ -133,13 +146,13 @@ export const Info = (props) => {
                                     <a href="https://featurepeek.com/" target="_blank">
                                         <li ><img id='express-icon' src="https://docs.featurepeek.com/img/logo-sprite.png" alt="" /></li>
                                     </a>
-                                    {/* <li><img src="https://www.mintbean.io/img/mintbean-logo.1474c6b6.png" alt="" /></li> */}
-                                    {/* <li><img src="https://i.imgur.com/aRRChFH.png" alt="" /></li> */}
+                                    <li><img src="https://www.mintbean.io/img/mintbean-logo.1474c6b6.png" alt="" /></li>
+                                    <li><img src="https://i.imgur.com/aRRChFH.png" alt="" /></li>
                                 </ul>
                             </div>
 
                         </div>
-                    </div>
+                    </div> */}
                 </div>
 
                 <div className="about-footer"></div>

@@ -5,7 +5,7 @@ import './All.css'
 
 const Container = styled.div`
     width: 100%;
-    height: 100%;
+    height: 90vh;
     display: ${(props) => (props.resource ? 'flex' : 'none')};
     justify-content: center;
     align-items: center;
